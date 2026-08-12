@@ -38,7 +38,7 @@
             padding-bottom: 40px;
         }
 
-        /* --- LOGIN & OTP MODAL STYLING --- */
+        /* --- LOGIN MODAL STYLING --- */
         #loginOverlay {
             position: fixed;
             top: 0;
@@ -116,20 +116,6 @@
             color: red;
             font-size: 0.85rem;
             margin-top: 10px;
-            display: none;
-        }
-
-        .otp-info-box {
-            background-color: #e8f4fd;
-            border: 1px dashed var(--primary-color);
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            color: #000;
-            font-size: 0.9rem;
-        }
-
-        .otp-step {
             display: none;
         }
 
@@ -286,42 +272,21 @@
 </head>
 <body>
 
-    <!-- ૧. લોગિન અને OTP પોપ-અપ -->
+    <!-- ૧. લોગિન પોપ-અપ -->
     <div id="loginOverlay">
         <div class="login-box">
-            
-            <!-- સ્ટેપ ૧: ID અને પાસવર્ડ -->
-            <div id="stepLogin">
-                <h2>સિક્યોર લોગિન</h2>
-                <p>ASHOK DIGITAL SERVICES માં પ્રવેશવા માટે ID અને પાસવર્ડ નાખો</p>
-                <div class="input-group">
-                    <label for="userId">User ID</label>
-                    <input type="text" id="userId" placeholder="ID આપો">
-                </div>
-                <div class="input-group">
-                    <label for="userPass">Password</label>
-                    <input type="password" id="userPass" placeholder="Password આપો">
-                </div>
-                <button class="btn-login" onclick="verifyCredentials()">આગળ વધો</button>
-                <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
+            <h2>સિક્યોર લોગિન</h2>
+            <p>ASHOK DIGITAL SERVICES માં પ્રવેશવા માટે ID અને પાસવર્ડ નાખો</p>
+            <div class="input-group">
+                <label for="userId">User ID</label>
+                <input type="text" id="userId" placeholder="ID આપો">
             </div>
-
-            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન (ટેલિગ્રામ દ્વારા ઓટીપી જશે) -->
-            <div id="stepOtp" class="otp-step">
-                <h2>OTP વેરિફિકેશન</h2>
-                
-                <div class="otp-info-box">
-                    તમારા મોબાઈલમાં Telegram પર <b>OTP મોકલવામાં આવ્યો છે</b>. કૃપા કરીને ચેક કરીને નીચે દાખલ કરો.
-                </div>
-
-                <div class="input-group">
-                    <label for="otpInput">Enter OTP</label>
-                    <input type="text" id="otpInput" maxlength="6" placeholder="મોબાઈલ પર આવેલ OTP નાખો">
-                </div>
-                <button class="btn-login" onclick="verifyOTP()">લોગિન કરો</button>
-                <p id="error2" class="error-msg">ખોટો OTP! ફરી પ્રયત્ન કરો.</p>
+            <div class="input-group">
+                <label for="userPass">Password</label>
+                <input type="password" id="userPass" placeholder="Password આપો">
             </div>
-
+            <button class="btn-login" onclick="verifyCredentials()">લોગિન કરો</button>
+            <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
         </div>
     </div>
 
@@ -352,7 +317,7 @@
                         <div class="doc-box">
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
-                                <li>ઓળખનો પુરાવો (દા.ત. આધાર કાર્ડ)</li>
+                                <li>ઓળખનો પુરાવો (દા.ત. ઓળખપત્ર)</li>
                                 <li>જન્મ તારીખનો પુરાવો</li>
                                 <li>૨ પાસપોર્ટ સાઈઝ ફોટા</li>
                                 <li>અરજદારની સહી</li>
@@ -417,12 +382,12 @@
                     <a href="https://enagar.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
                 </div>
 
-                <!-- ૫. આધાર કાર્ડ -->
+                <!-- ૫. આધાર સેવાઓ -->
                 <div class="service-card">
                     <div>
                         <div class="service-icon"><i class="fa-solid fa-id-badge"></i></div>
-                        <h3>આધાર કાર્ડ સેવાઓ (Aadhaar Services)</h3>
-                        <p>આધાર કાર્ડ ડાઉનલોડ કરવું, સરનામું બદલવું, મોબાઈલ નંબર સ્ટેટસ અને PVC કાર્ડ ડાઉનલોડ.</p>
+                        <h3>આધાર પોર્ટલ સેવાઓ (Aadhaar Services)</h3>
+                        <p>પોર્ટલ ડાઉનલોડ કરવું, સરનામું બદલવું, મોબાઈલ નંબર સ્ટેટસ અને PVC કાર્ડ ડાઉનલોડ.</p>
                         <div class="doc-box">
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
@@ -466,13 +431,8 @@
     <script>
         const correctID = "30062001";
         const correctPass = "Raval@.2001";
-        let generatedOTP = "";
 
-        // TELEGRAM BOT CONFIGURATION
-        const telegramBotToken = "YOUR_TELEGRAM_BOT_TOKEN"; // અહીં તમારો Bot Token પેસ્ટ કરો
-        const telegramChatId = "6564718271";                 // તમારો Chat ID સેટ કરી દીધો છે
-
-        // ૧. ID-Password ચકાસીને Telegram પર OTP મોકલવો
+        // ID-Password ચકાસીને સીધું લોગિન કરવું
         function verifyCredentials() {
             const enteredID = document.getElementById("userId").value.trim();
             const enteredPass = document.getElementById("userPass").value.trim();
@@ -480,64 +440,26 @@
 
             if (enteredID === correctID && enteredPass === correctPass) {
                 error1.style.display = "none";
-                
-                // ૬ અંકનો રેન્ડમ OTP જનરેટ કરવો
-                generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-                
-                // Telegram API દ્વારા મોબાઈલ પર મેસેજ મોકલવો
-                sendTelegramOTP(generatedOTP);
-
-                document.getElementById("stepLogin").style.display = "none";
-                document.getElementById("stepOtp").style.display = "block";
+                sessionStorage.setItem("isLoggedIn", "true");
+                showMainWebsite();
             } else {
                 error1.style.display = "block";
             }
         }
 
-        // Telegram Bot API Call Function
-        function sendTelegramOTP(otp) {
-            const textMessage = `🔐 ASHOK DIGITAL SERVICES\n\nતમારો લૉગિન OTP છે: ${otp}\n(આ OTP કોઈની સાથે શેર કરશો નહીં)`;
-            const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(textMessage)}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    console.log("OTP Sent via Telegram:", data);
-                })
-                .catch(error => {
-                    console.error("Telegram API Error:", error);
-                });
-        }
-
-        // ૨. OTP ચકાસણી અને લોગિન
-        function verifyOTP() {
-            const userOTP = document.getElementById("otpInput").value.trim();
-            const error2 = document.getElementById("error2");
-
-            if (userOTP === generatedOTP) {
-                error2.style.display = "none";
-                
-                // Session Storage સેટ કરવું
-                sessionStorage.setItem("isLoggedIn", "true");
-                showMainWebsite();
-            } else {
-                error2.style.display = "block";
-            }
-        }
-
-        // ૩. મુખ્ય વેબસાઈટ બતાવો
+        // મુખ્ય વેબસાઈટ બતાવો
         function showMainWebsite() {
             document.getElementById("loginOverlay").style.display = "none";
             document.getElementById("mainContent").style.display = "block";
         }
 
-        // ૪. મેન્યુઅલ લોગઆઉટ બટન
+        // મેન્યુઅલ લોગઆઉટ બટન
         function manualLogout() {
             sessionStorage.removeItem("isLoggedIn");
             location.reload();
         }
 
-        // ૫. AUTO LOGOUT LOGIC
+        // AUTO LOGOUT LOGIC (ટેબ બંધ કે રીફ્રેશ થાય એટલે ઓટોમેટિક લોગઆઉટ)
         window.onload = function() {
             if (sessionStorage.getItem("isLoggedIn") === "true") {
                 showMainWebsite();
