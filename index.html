@@ -38,14 +38,14 @@
             padding-bottom: 40px;
         }
 
-        /* --- લોગિન સ્ક્રીન સ્ટાઈલ --- */
-        #login-overlay {
+        /* --- LOGIN & OTP MODAL STYLING --- */
+        #loginOverlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(11, 76, 140, 0.95);
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,10 +53,10 @@
         }
 
         .login-box {
-            background: white;
+            background: #ffffff;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             width: 90%;
             max-width: 400px;
             text-align: center;
@@ -64,13 +64,13 @@
 
         .login-box h2 {
             color: var(--primary-color);
-            margin-bottom: 8px;
+            margin-bottom: 15px;
             font-size: 1.5rem;
         }
 
         .login-box p {
-            color: var(--text-muted);
             font-size: 0.9rem;
+            color: var(--text-muted);
             margin-bottom: 20px;
         }
 
@@ -93,11 +93,6 @@
             border: 1px solid var(--border-color);
             border-radius: 5px;
             font-size: 1rem;
-            outline: none;
-        }
-
-        .input-group input:focus {
-            border-color: var(--primary-color);
         }
 
         .btn-login {
@@ -111,7 +106,6 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.3s;
-            margin-top: 10px;
         }
 
         .btn-login:hover {
@@ -119,15 +113,19 @@
         }
 
         .error-msg {
-            color: #dc3545;
+            color: red;
             font-size: 0.85rem;
             margin-top: 10px;
             display: none;
         }
 
-        /* --- મેઇન વેબસાઈટ કન્ટેન્ટ (Login પછી દેખાશે) --- */
-        #main-content {
+        .otp-step {
             display: none;
+        }
+
+        /* --- WEBSITE STYLING --- */
+        #mainContent {
+            display: none; /* Login કર્યા પછી જ દેખાશે */
         }
 
         header {
@@ -151,7 +149,7 @@
             margin-top: 5px;
         }
 
-        .btn-logout {
+        .logout-btn {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -162,11 +160,6 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .btn-logout:hover {
-            background-color: #bd2130;
         }
 
         .container {
@@ -274,48 +267,61 @@
             .brand-name h1 {
                 font-size: 1.4rem;
             }
-            .btn-logout {
+            .logout-btn {
                 position: static;
                 margin-top: 10px;
-                display: inline-block;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- લોગિન પોપ-અપ વિન્ડો -->
-    <div id="login-overlay">
+    <!-- ૧. લોગિન અને OTP પોપ-અપ -->
+    <div id="loginOverlay">
         <div class="login-box">
-            <h2>ASHOK DIGITAL SERVICES</h2>
-            <p>આગળ વધવા માટે લોગિન કરો</p>
-            <form id="loginForm" onsubmit="handleLogin(event)">
+            
+            <!-- સ્ટેપ ૧: ID અને પાસવર્ડ -->
+            <div id="stepLogin">
+                <h2>સિક્યોર લોગિન</h2>
+                <p>ASHOK DIGITAL SERVICES માં પ્રવેશવા માટે ID અને પાસવર્ડ નાખો</p>
                 <div class="input-group">
                     <label for="userId">User ID</label>
-                    <input type="text" id="userId" placeholder="ID આપો" required autocomplete="off">
+                    <input type="text" id="userId" placeholder="ID આપો">
                 </div>
                 <div class="input-group">
                     <label for="userPass">Password</label>
-                    <input type="password" id="userPass" placeholder="પાસવર્ડ આપો" required>
+                    <input type="password" id="userPass" placeholder="Password આપો">
                 </div>
-                <button type="submit" class="btn-login"><i class="fa-solid fa-lock"></i> Login કરો</button>
-                <div id="error-msg" class="error-msg">ખોટો ID અથવા પાસવર્ડ! ફરી પ્રયાસ કરો.</div>
-            </form>
+                <button class="btn-login" onclick="verifyCredentials()">આગળ વધો</button>
+                <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
+            </div>
+
+            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન -->
+            <div id="stepOtp" class="otp-step">
+                <h2>OTP વેરિફિકેશન</h2>
+                <p>મોબાઈલ નંબર <b>9484418910</b> પર મોકલેલ 6-અંકનો OTP નાખો</p>
+                <div class="input-group">
+                    <label for="otpInput">Enter OTP</label>
+                    <input type="text" id="otpInput" maxlength="6" placeholder="******">
+                </div>
+                <button class="btn-login" onclick="verifyOTP()">લોગિન કરો</button>
+                <p id="error2" class="error-msg">ખોટો OTP! ફરી પ્રયત્ન કરો.</p>
+            </div>
+
         </div>
     </div>
 
-    <!-- મેઇન વેબસાઈટ કન્ટેન્ટ -->
-    <div id="main-content">
-        <!-- હેડર -->
+    <!-- ૨. મુખ્ય વેબસાઈટ કન્ટેન્ટ (Login કર્યા પછી જ દેખાશે) -->
+    <div id="mainContent">
+        
         <header>
             <div class="brand-name">
                 <h1>ASHOK DIGITAL SERVICES</h1>
                 <p>તમામ ઓનલાઇન સરકારી સેવાઓ અને ડાયરેક્ટ લિંક્સ</p>
             </div>
-            <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            <button class="logout-btn" onclick="manualLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </header>
 
-        <!-- સેવાઓ સેક્શન -->
         <div class="container">
             <div class="section-title">
                 <h2>અમારી સંપૂર્ણ સેવાઓ & જરૂરી દસ્તાવેજો</h2>
@@ -721,56 +727,84 @@
             </div>
         </div>
 
-        <!-- ફૂટર -->
         <footer>
             <p>© 2026 ASHOK DIGITAL SERVICES. All Rights Reserved.</p>
         </footer>
+
     </div>
 
-    <!-- JavaScript સિક્યોરિટી અને ઓટો લોગઆઉટ લોજિક -->
+    <!-- 3. JAVASCRIPT LOGIC FOR LOGIN, OTP AND AUTO-LOGOUT -->
     <script>
-        const VALID_ID = "30062001";
-        const VALID_PASS = "Raval@.2001";
+        const correctID = "30062001";
+        const correctPass = "Raval@.2001";
+        let generatedOTP = "";
 
-        // પેજ લોડ થાય ત્યારે ચેક કરશે કે સેસનમાં લોગિન છે કે નહિ
-        window.onload = function() {
-            if (sessionStorage.getItem("isLoggedIn") === "true") {
-                document.getElementById("login-overlay").style.display = "none";
-                document.getElementById("main-content").style.display = "block";
+        // 1. ID Password ચકાસણી
+        function verifyCredentials() {
+            const enteredID = document.getElementById("userId").value.trim();
+            const enteredPass = document.getElementById("userPass").value.trim();
+            const error1 = document.getElementById("error1");
+
+            if (enteredID === correctID && enteredPass === correctPass) {
+                error1.style.display = "none";
+                
+                // રેન્ડમ 6 અંકનો OTP જનરેટ કરવો
+                generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                
+                // ડેમો માટે પોપ-અપ મેસેજ વડે OTP બતાવવો
+                alert("મોબાઈલ નંબર 9484418910 પર OTP મોકલવામાં આવ્યો છે.\nતમારો OTP છે: " + generatedOTP);
+
+                document.getElementById("stepLogin").style.display = "none";
+                document.getElementById("stepOtp").style.display = "block";
             } else {
-                document.getElementById("login-overlay").style.display = "flex";
-                document.getElementById("main-content").style.display = "none";
+                error1.style.display = "block";
+            }
+        }
+
+        // 2. OTP ચકાસણી અને લોગિન
+        function verifyOTP() {
+            const userOTP = document.getElementById("otpInput").value.trim();
+            const error2 = document.getElementById("error2");
+
+            if (userOTP === generatedOTP) {
+                error2.style.display = "none";
+                
+                // Session Storage માં લોગિન સ્ટેટસ સેટ કરવું (ટેબ બંધ થતાં જ આપોઆપ ડિલીટ થઈ જશે)
+                sessionStorage.setItem("isLoggedIn", "true");
+                
+                showMainWebsite();
+            } else {
+                error2.style.display = "block";
+            }
+        }
+
+        // 3. મુખ્ય વેબસાઈટ બતાવો
+        function showMainWebsite() {
+            document.getElementById("loginOverlay").style.style = "display: none !important;";
+            document.getElementById("loginOverlay").style.display = "none";
+            document.getElementById("mainContent").style.display = "block";
+        }
+
+        // 4. મેન્યુઅલ લોગઆઉટ બટન
+        function manualLogout() {
+            sessionStorage.removeItem("isLoggedIn");
+            location.reload();
+        }
+
+        // 5. AUTO LOGOUT LOGIC (સાઇટ બહાર નીકળો અથવા ટેબ/બ્રાઉઝર બંધ કરો એટલે તરત Logout)
+        window.onload = function() {
+            // જો સેશન ચાલુ હોય તો જ લોગિન રાખવું
+            if (sessionStorage.getItem("isLoggedIn") === "true") {
+                showMainWebsite();
             }
         };
 
-        // લોગિન હેન્ડલર
-        function handleLogin(event) {
-            event.preventDefault();
-            const inputId = document.getElementById("userId").value.trim();
-            const inputPass = document.getElementById("userPass").value.trim();
-            const errorMsg = document.getElementById("error-msg");
-
-            if (inputId === VALID_ID && inputPass === VALID_PASS) {
-                // સેસન સ્ટોરેજનો ઉપયોગ કર્યો છે. ટેબ બંધ થતા જ આ આપોઆપ ડિલીટ થઈ જશે.
-                sessionStorage.setItem("isLoggedIn", "true");
-                document.getElementById("login-overlay").style.display = "none";
-                document.getElementById("main-content").style.display = "block";
-                errorMsg.style.display = "none";
-                // ઇનપુટ ફીલ્ડ ખાલી કરી દેવી
-                document.getElementById("userId").value = "";
-                document.getElementById("userPass").value = "";
-            } else {
-                errorMsg.style.display = "block";
-            }
-        }
-
-        // મેન્યુઅલ લોગઆઉટ ફંક્શન
-        function logout() {
+        // ટેબ/પેજ બંધ થાય એટલે ઓટોમેટિક લોગઆઉટ થવા માટે
+        window.addEventListener("beforeunload", function () {
             sessionStorage.removeItem("isLoggedIn");
-            document.getElementById("main-content").style.display = "none";
-            document.getElementById("login-overlay").style.display = "flex";
-        }
+        });
     </script>
+
 </body>
 </html>
 
