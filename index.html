@@ -38,7 +38,7 @@
             padding-bottom: 40px;
         }
 
-        /* --- લૉગિન સ્ક્રીન સ્ટાઇલ --- */
+        /* --- લોગિન સ્ક્રીન સ્ટાઈલ --- */
         #login-overlay {
             position: fixed;
             top: 0;
@@ -53,24 +53,24 @@
         }
 
         .login-box {
-            background-color: #ffffff;
-            padding: 30px 25px;
+            background: white;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             width: 90%;
-            max-width: 380px;
+            max-width: 400px;
             text-align: center;
         }
 
         .login-box h2 {
             color: var(--primary-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-size: 1.5rem;
         }
 
         .login-box p {
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             margin-bottom: 20px;
         }
 
@@ -84,15 +84,15 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 5px;
-            color: var(--text-main);
+            color: var(--primary-color);
         }
 
         .input-group input {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px;
             border: 1px solid var(--border-color);
             border-radius: 5px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             outline: none;
         }
 
@@ -102,7 +102,7 @@
 
         .btn-login {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: var(--primary-color);
             color: white;
             border: none;
@@ -119,15 +119,15 @@
         }
 
         .error-msg {
-            color: #d9534f;
+            color: #dc3545;
             font-size: 0.85rem;
             margin-top: 10px;
             display: none;
         }
 
-        /* --- મેન કન્ટેન્ટ સ્ટાઇલ --- */
+        /* --- મેઇન વેબસાઈટ કન્ટેન્ટ (Login પછી દેખાશે) --- */
         #main-content {
-            display: none; /* લૉગિન કર્યા પછી જ દેખાશે */
+            display: none;
         }
 
         header {
@@ -155,7 +155,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background-color: var(--secondary-color);
+            background-color: #dc3545;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -163,6 +163,10 @@
             cursor: pointer;
             font-weight: 600;
             font-size: 0.85rem;
+        }
+
+        .btn-logout:hover {
+            background-color: #bd2130;
         }
 
         .container {
@@ -268,7 +272,7 @@
 
         @media (max-width: 768px) {
             .brand-name h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             .btn-logout {
                 position: static;
@@ -280,35 +284,35 @@
 </head>
 <body>
 
-    <!-- લૉગિન ફોર્મ પોપ-અપ -->
+    <!-- લોગિન પોપ-અપ વિન્ડો -->
     <div id="login-overlay">
         <div class="login-box">
-            <h2>ASHOK DIGITAL</h2>
-            <p>પોર્ટલ એક્સેસ કરવા માટે લૉગિન કરો</p>
-            <form id="loginForm" onsubmit="return handleLogin(event)">
+            <h2>ASHOK DIGITAL SERVICES</h2>
+            <p>આગળ વધવા માટે લોગિન કરો</p>
+            <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="input-group">
-                    <label for="userId">યુઝર ID</label>
-                    <input type="text" id="userId" placeholder="ID દાખલ કરો" required autocomplete="off">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" placeholder="ID આપો" required autocomplete="off">
                 </div>
                 <div class="input-group">
-                    <label for="userPass">પાસવર્ડ</label>
-                    <input type="password" id="userPass" placeholder="પાસવર્ડ દાખલ કરો" required autocomplete="off">
+                    <label for="userPass">Password</label>
+                    <input type="password" id="userPass" placeholder="પાસવર્ડ આપો" required>
                 </div>
-                <button type="submit" class="btn-login">લૉગિન કરો</button>
-                <div id="error-msg" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</div>
+                <button type="submit" class="btn-login"><i class="fa-solid fa-lock"></i> Login કરો</button>
+                <div id="error-msg" class="error-msg">ખોટો ID અથવા પાસવર્ડ! ફરી પ્રયાસ કરો.</div>
             </form>
         </div>
     </div>
 
-    <!-- મેન વેબસાઇટ સેક્શન -->
+    <!-- મેઇન વેબસાઈટ કન્ટેન્ટ -->
     <div id="main-content">
         <!-- હેડર -->
         <header>
-            <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> લૉગઆઉટ</button>
             <div class="brand-name">
                 <h1>ASHOK DIGITAL SERVICES</h1>
                 <p>તમામ ઓનલાઇન સરકારી સેવાઓ અને ડાયરેક્ટ લિંક્સ</p>
             </div>
+            <button class="btn-logout" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </header>
 
         <!-- સેવાઓ સેક્શન -->
@@ -723,59 +727,50 @@
         </footer>
     </div>
 
-    <!-- JavaScript સિક્યોરિટી અને લૉગિન લોજિક -->
+    <!-- JavaScript સિક્યોરિટી અને ઓટો લોગઆઉટ લોજિક -->
     <script>
-        const CORRECT_ID = "30062001";
-        const CORRECT_PASS = "Raval@.2001";
+        const VALID_ID = "30062001";
+        const VALID_PASS = "Raval@.2001";
 
-        function handleLogin(e) {
-            e.preventDefault();
-            const idInput = document.getElementById('userId').value.trim();
-            const passInput = document.getElementById('userPass').value.trim();
-            const errorMsg = document.getElementById('error-msg');
+        // પેજ લોડ થાય ત્યારે ચેક કરશે કે સેસનમાં લોગિન છે કે નહિ
+        window.onload = function() {
+            if (sessionStorage.getItem("isLoggedIn") === "true") {
+                document.getElementById("login-overlay").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                document.getElementById("login-overlay").style.display = "flex";
+                document.getElementById("main-content").style.display = "none";
+            }
+        };
 
-            if (idInput === CORRECT_ID && passInput === CORRECT_PASS) {
+        // લોગિન હેન્ડલર
+        function handleLogin(event) {
+            event.preventDefault();
+            const inputId = document.getElementById("userId").value.trim();
+            const inputPass = document.getElementById("userPass").value.trim();
+            const errorMsg = document.getElementById("error-msg");
+
+            if (inputId === VALID_ID && inputPass === VALID_PASS) {
+                // સેસન સ્ટોરેજનો ઉપયોગ કર્યો છે. ટેબ બંધ થતા જ આ આપોઆપ ડિલીટ થઈ જશે.
                 sessionStorage.setItem("isLoggedIn", "true");
-                document.getElementById('login-overlay').style.display = "none";
-                document.getElementById('main-content').style.display = "block";
+                document.getElementById("login-overlay").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
                 errorMsg.style.display = "none";
-                document.getElementById('loginForm').reset();
+                // ઇનપુટ ફીલ્ડ ખાલી કરી દેવી
+                document.getElementById("userId").value = "";
+                document.getElementById("userPass").value = "";
             } else {
                 errorMsg.style.display = "block";
             }
-            return false;
         }
 
+        // મેન્યુઅલ લોગઆઉટ ફંક્શન
         function logout() {
             sessionStorage.removeItem("isLoggedIn");
-            document.getElementById('main-content').style.display = "none";
-            document.getElementById('login-overlay').style.display = "flex";
-            document.getElementById('loginForm').reset();
+            document.getElementById("main-content").style.display = "none";
+            document.getElementById("login-overlay").style.display = "flex";
         }
-
-        // સ્ક્રીનમાંથી બહાર નીકળતા અથવા ટેબ મિનિમાઇઝ/ચેન્જ કરતા તરત જ Auto-Logout થશે
-        document.addEventListener("visibilitychange", function() {
-            if (document.hidden) {
-                logout();
-            }
-        });
-
-        // જો યુઝર Back બટન દબાવશે તો પણ Logout થઈ જશે
-        window.addEventListener("pagehide", function() {
-            logout();
-        });
-
-        // પેજ લોડ થતી વખતે સેશન ચેક કરો
-        window.onload = function() {
-            if (sessionStorage.getItem("isLoggedIn") === "true") {
-                document.getElementById('login-overlay').style.display = "none";
-                document.getElementById('main-content').style.display = "block";
-            } else {
-                logout();
-            }
-        };
     </script>
-
 </body>
 </html>
 
