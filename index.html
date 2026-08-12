@@ -119,13 +119,33 @@
             display: none;
         }
 
+        /* સ્ક્રીન પર ટેક્સ્ટ રૂપે OTP બતાવવા માટે બોક્સ */
+        .otp-display-box {
+            background-color: #e8f4fd;
+            border: 1px dashed var(--primary-color);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 0.95rem;
+        }
+
+        .otp-number {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #d9534f;
+            letter-spacing: 2px;
+            display: block;
+            margin-top: 4px;
+        }
+
         .otp-step {
             display: none;
         }
 
         /* --- WEBSITE STYLING --- */
         #mainContent {
-            display: none; /* Login કર્યા પછી જ દેખાશે */
+            display: none;
         }
 
         header {
@@ -296,13 +316,18 @@
                 <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
             </div>
 
-            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન -->
+            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન (સ્ક્રીન પર ટેક્સ્ટ રૂપે) -->
             <div id="stepOtp" class="otp-step">
                 <h2>OTP વેરિફિકેશન</h2>
-                <p>મોબાઈલ નંબર <b>9484418910</b> પર મોકલેલ 6-અંકનો OTP નાખો</p>
+                
+                <div class="otp-display-box">
+                    મોબાઈલ નંબર <b>9484418910</b> પર OTP મોકલવામાં આવ્યો છે.
+                    <span class="otp-number">તમારો OTP છે: <span id="generatedOtpText">------</span></span>
+                </div>
+
                 <div class="input-group">
                     <label for="otpInput">Enter OTP</label>
-                    <input type="text" id="otpInput" maxlength="6" placeholder="******">
+                    <input type="text" id="otpInput" maxlength="6" placeholder="ઉપર બતાવેલ OTP નાખો">
                 </div>
                 <button class="btn-login" onclick="verifyOTP()">લોગિન કરો</button>
                 <p id="error2" class="error-msg">ખોટો OTP! ફરી પ્રયત્ન કરો.</p>
@@ -311,7 +336,7 @@
         </div>
     </div>
 
-    <!-- ૨. મુખ્ય વેબસાઈટ કન્ટેન્ટ (Login કર્યા પછી જ દેખાશે) -->
+    <!-- ૨. મુખ્ય વેબસાઈટ કન્ટેન્ટ -->
     <div id="mainContent">
         
         <header>
@@ -733,13 +758,13 @@
 
     </div>
 
-    <!-- 3. JAVASCRIPT LOGIC FOR LOGIN, OTP AND AUTO-LOGOUT -->
+    <!-- 3. JAVASCRIPT LOGIC -->
     <script>
         const correctID = "30062001";
         const correctPass = "Raval@.2001";
         let generatedOTP = "";
 
-        // 1. ID Password ચકાસણી
+        // ૧. Random 6 અંકનો OTP જનરેટ કરવો અને સ્ક્રીન પર બતાવવો
         function verifyCredentials() {
             const enteredID = document.getElementById("userId").value.trim();
             const enteredPass = document.getElementById("userPass").value.trim();
@@ -748,11 +773,11 @@
             if (enteredID === correctID && enteredPass === correctPass) {
                 error1.style.display = "none";
                 
-                // રેન્ડમ 6 અંકનો OTP જનરેટ કરવો
+                // ૬ અંકનો રેન્ડમ OTP બનાવો
                 generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
                 
-                // ડેમો માટે પોપ-અપ મેસેજ વડે OTP બતાવવો
-                alert("મોબાઈલ નંબર 9484418910 પર OTP મોકલવામાં આવ્યો છે.\nતમારો OTP છે: " + generatedOTP);
+                // alert() ની જગ્યાએ સ્ક્રીન પરના HTML માં OTP બતાવો
+                document.getElementById("generatedOtpText").innerText = generatedOTP;
 
                 document.getElementById("stepLogin").style.display = "none";
                 document.getElementById("stepOtp").style.display = "block";
@@ -761,7 +786,7 @@
             }
         }
 
-        // 2. OTP ચકાસણી અને લોગિન
+        // ૨. OTP ચકાસણી અને લોગિન
         function verifyOTP() {
             const userOTP = document.getElementById("otpInput").value.trim();
             const error2 = document.getElementById("error2");
@@ -769,37 +794,33 @@
             if (userOTP === generatedOTP) {
                 error2.style.display = "none";
                 
-                // Session Storage માં લોગિન સ્ટેટસ સેટ કરવું (ટેબ બંધ થતાં જ આપોઆપ ડિલીટ થઈ જશે)
+                // Session Storage સેટ કરવું
                 sessionStorage.setItem("isLoggedIn", "true");
-                
                 showMainWebsite();
             } else {
                 error2.style.display = "block";
             }
         }
 
-        // 3. મુખ્ય વેબસાઈટ બતાવો
+        // ૩. મુખ્ય વેબસાઈટ બતાવો
         function showMainWebsite() {
-            document.getElementById("loginOverlay").style.style = "display: none !important;";
             document.getElementById("loginOverlay").style.display = "none";
             document.getElementById("mainContent").style.display = "block";
         }
 
-        // 4. મેન્યુઅલ લોગઆઉટ બટન
+        // ૪. મેન્યુઅલ લોગઆઉટ બટન
         function manualLogout() {
             sessionStorage.removeItem("isLoggedIn");
             location.reload();
         }
 
-        // 5. AUTO LOGOUT LOGIC (સાઇટ બહાર નીકળો અથવા ટેબ/બ્રાઉઝર બંધ કરો એટલે તરત Logout)
+        // ૫. AUTO LOGOUT LOGIC
         window.onload = function() {
-            // જો સેશન ચાલુ હોય તો જ લોગિન રાખવું
             if (sessionStorage.getItem("isLoggedIn") === "true") {
                 showMainWebsite();
             }
         };
 
-        // ટેબ/પેજ બંધ થાય એટલે ઓટોમેટિક લોગઆઉટ થવા માટે
         window.addEventListener("beforeunload", function () {
             sessionStorage.removeItem("isLoggedIn");
         });
