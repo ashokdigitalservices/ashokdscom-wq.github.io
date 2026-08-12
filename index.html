@@ -9,7 +9,7 @@
 
     <!-- SEO Meta Tags -->
     <title>Ashok Digital Services | શ્રેષ્ઠ ઓનલાઇન સરકારી અને ડિજિટલ સેવાઓ</title>
-    <meta name="description" content="Ashok Digital Services - તમામ પ્રકારના સરકારી ઓનલાઇન ફોર્મ, 7/12/8-A ના ઉતારા, MSME">
+    <meta name="description" content="Ashok Digital Services - તમામ પ્રકારના સરકારી ઓનલાઇન ફોર્મ, 7/12/8-A ના ઉતારા, MSME, આવકના દાખલા, કાર્ડ વગેરે.">
 
     <!-- WhatsApp અને સોશિયલ મીડિયા લિંક પ્રિવ્યૂ (OG Tags) -->
     <meta property="og:title" content="Ashok Digital Services | શ્રેષ્ઠ ઓનલાઇન સરકારી અને ડિજિટલ સેવાઓ" />
@@ -74,7 +74,6 @@
             body { display: none !important; }
         }
 
-        /* ડાર્ક મોડ ટોગલ બટન */
         .theme-toggle-btn {
             background: none;
             border: none;
@@ -89,29 +88,6 @@
             transform: scale(1.1);
         }
 
-        /* મટીરીયલ રિપલ ઇફેક્ટ */
-        .btn, .service-card, .contact-btn {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ripple {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple-effect 0.6s linear;
-            pointer-events: none;
-        }
-
-        @keyframes ripple-effect {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
-        /* માર્કી કસ્ટમાઇઝેશન */
         .marquee-container {
             background-color: #fff3cd;
             color: #856404;
@@ -302,7 +278,7 @@
         }
 
         .service-card:hover {
-            transform: translateY(-50px);
+            transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.12);
         }
 
@@ -327,9 +303,16 @@
             margin-bottom: 20px;
         }
 
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
         .btn {
+            flex: 1;
             display: inline-block;
-            padding: 10px 20px;
+            padding: 10px 12px;
             background-color: var(--primary-color);
             color: white;
             text-decoration: none;
@@ -338,11 +321,20 @@
             text-align: center;
             border: none;
             cursor: pointer;
+            font-size: 0.85rem;
             transition: background-color 0.3s;
         }
 
         .btn:hover {
             background-color: #083868;
+        }
+
+        .btn-direct {
+            background-color: #28a745;
+        }
+
+        .btn-direct:hover {
+            background-color: #218838;
         }
 
         .btn-whatsapp {
@@ -353,7 +345,7 @@
             background-color: #1da851;
         }
 
-        /* વિજેટ્સ સેક્શન (નવા ઉમેરેલા) */
+        /* વિજેટ્સ સેક્શન */
         .widgets-section {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -380,7 +372,7 @@
             border-bottom-color: #64b5f6;
         }
 
-        .calculator-form input, .calculator-form select {
+        .calculator-form input {
             width: 100%;
             padding: 8px 12px;
             margin-bottom: 10px;
@@ -396,7 +388,6 @@
             color: var(--secondary-color);
         }
 
-        /* ઈમરજન્સી નંબર લિસ્ટ */
         .helpline-list {
             list-style: none;
         }
@@ -407,7 +398,6 @@
             justify-content: space-between;
         }
 
-        /* નવીનતમ અપડેટ્સ લિસ્ટ */
         .updates-list {
             list-style: none;
         }
@@ -505,7 +495,6 @@
             color: var(--primary-color);
         }
 
-        /* ગુગલ ટ્રાન્સલેટ કસ્ટમાઇઝેશન */
         #google_translate_element {
             display: inline-block;
         }
@@ -532,8 +521,8 @@
             .hero h2 {
                 font-size: 1.6rem;
             }
-            .service-card:hover {
-                transform: none;
+            .btn-group {
+                flex-direction: column;
             }
         }
     </style>
@@ -562,10 +551,7 @@
             </div>
             
             <div style="display: flex; align-items: center; gap: 10px;">
-                <!-- ગુગલ ટ્રાન્સલેટ -->
                 <div id="google_translate_element"></div>
-                
-                <!-- ડાર્ક મોડ બટન -->
                 <button class="theme-toggle-btn" id="themeToggleBtn" title="થીમ બદલો">
                     <i class="fa-solid fa-moon"></i>
                 </button>
@@ -586,95 +572,231 @@
         <p>અમે આપને ઝડપી, પારદર્શી અને વિશ્વસનીય ડિજિટલ સેવાઓ આપવા માટે કટિબદ્ધ છીએ.</p>
         
         <div class="search-box">
-            <input type="text" id="searchInput" onkeyup="searchServices()" placeholder="તમને જોઈતી સેવા શોધો... (દા.ત. 7/12, આયુષ્માન, પાન કાર્ડ)">
+            <input type="text" id="searchInput" onkeyup="searchServices()" placeholder="તમને જોઈતી સેવા શોધો... (દા.ત. 7/12, આયુષ્માન, પાન કાર્ડ, રેશન કાર્ડ)">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
     </section>
 
-    <!-- સેવાઓ સેક્શન -->
+    <!-- સેવાઓ સેક્શન (તમામ ૧૬+ સેવાઓ ડાયરેક્ટ લિંક સાથે) -->
     <div class="container" id="services">
         <div class="section-title">
-            <h3>અમારી મુખ્ય સેવાઓ</h3>
+            <h3>અમારી સંપૂર્ણ સેવાઓ</h3>
         </div>
 
         <div class="services-grid" id="servicesGrid">
             
-            <!-- સેવા ૧ -->
+            <!-- સેવા ૧: જમીનના દસ્તાવેજો -->
             <div class="service-card">
                 <div>
                     <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
                     <h4>જમીનના દસ્તાવેજો (7/12 & 8-A)</h4>
-                    <p>તમારી જમીનના 7/12, 8-A, હક પત્રક (6 નંબર) અને જૂના શરત/નવી શરતના દાખલા ઓનલાઇન મેળવો.</p>
+                    <p>તમારી જમીનના 7/12, 8-A, હક પત્રક (6 નંબર) અને જૂના/નવી શરતના દાખલા ઓનલાઇન મેળવો.</p>
                 </div>
-                <a href="https://wa.me/919904528938?text=મને%20જમીનના%207/12%20અને%208-A%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> અરજી કરો
-                </a>
+                <div class="btn-group">
+                    <a href="https://anyror.gujarat.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%207/12%20અને%208-A%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
             </div>
 
-            <!-- સેવા ૨ -->
+            <!-- સેવા ૨: આયુષ્માન ભારત કાર્ડ -->
             <div class="service-card">
                 <div>
                     <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
-                    <h4>આયુષ્માન ભારત કાર્ડ</h4>
-                    <p>રૂ. 10 લાખ સુધીની મફત સારવાર આપતું આયુષ્માન ભારત (PM-JAY) કાર્ડ કઢાવો અથવા રિન્યૂ કરો.</p>
+                    <h4>આયુષ્માન ભારત કાર્ડ (PM-JAY)</h4>
+                    <p>રૂ. 10 લાખ સુધીની મફત સારવાર આપતું આયુષ્માન ભારત કાર્ડ કઢાવો અથવા રિન્યૂ કરો.</p>
                 </div>
-                <a href="https://wa.me/919904528938?text=મને%20આયુષ્માન%20કાર્ડ%20બનાવવું%20છે" class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> અરજી કરો
-                </a>
+                <div class="btn-group">
+                    <a href="https://beneficiary.nha.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20આયુષ્માન%20કાર્ડ%20બનાવવું%20છે" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
             </div>
 
-            <!-- સેવા ૩ -->
+            <!-- સેવા ૩: પાન કાર્ડ -->
             <div class="service-card">
                 <div>
                     <div class="service-icon"><i class="fa-solid fa-address-card"></i></div>
                     <h4>નવું પાન કાર્ડ / સુધારો</h4>
                     <p>નવું પાન કાર્ડ બનાવડાવો અથવા જૂના પાન કાર્ડમાં નામ, જન્મતારીખ કે સરનામું ઓનલાઇન સુધારો.</p>
                 </div>
-                <a href="https://wa.me/919904528938?text=મને%20પાન%20કાર્ડ%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> અરજી કરો
-                </a>
+                <div class="btn-group">
+                    <a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20પાન%20કાર્ડ%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
             </div>
 
-            <!-- સેવા ૪ -->
+            <!-- સેવા ૪: ઇ-શ્રમ કાર્ડ -->
             <div class="service-card">
                 <div>
                     <div class="service-icon"><i class="fa-solid fa-user-gear"></i></div>
                     <h4>ઇ-શ્રમ કાર્ડ / શ્રમિક યોજનાઓ</h4>
-                    <p>અસંગઠિત ક્ષેત્રના મજૂરો અને કારીગરો માટે ઇ-શ્રમ કાર્ડ અને સરકારી યોજનાઓની સહાય મેળવો.</p>
+                    <p>અસંગઠિત ક્ષેત્રના મજૂરો અને કારીગરો માટે ઇ-શ્રમ કાર્ડ અને સરકારી યોજનાઓની સહાય.</p>
                 </div>
-                <a href="https://wa.me/919904528938?text=મને%20ઇ-શ્રમ%20કાર્ડ%20બનાવવું%20છે" class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> અરજી કરો
-                </a>
+                <div class="btn-group">
+                    <a href="https://eshram.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20ઇ-શ્રમ%20કાર્ડ%20બનાવવું%20છે" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
             </div>
 
-            <!-- સેવા ૫ -->
+            <!-- સેવા ૫: પાસપોર્ટ સેવા -->
             <div class="service-card">
                 <div>
                     <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
-                    <h4>પાસપોર્ટ ફોર્મ અને એપોઇન્ટમેન્ટ</h4>
+                    <h4>પાસપોર્ટ ફોર્મ & એપોઇન્ટમેન્ટ</h4>
                     <p>નવા પાસપોર્ટ માટે ઓનલાઇન અરજી, ડોક્યુમેન્ટ વેરિફિકેશન અને એપોઇન્ટમેન્ટ બુકિંગ સેવા.</p>
                 </div>
-                <a href="https://wa.me/919904528938?text=મને%20પાસપોર્ટ%20માટે%20અરજી%20કરવી%20છે" class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> અરજી કરો
-                </a>
+                <div class="btn-group">
+                    <a href="https://www.passportindia.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20પાસપોર્ટ%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
             </div>
 
-            <!-- સેવા ૬ -->
+            <!-- સેવા ૬: આવક / જાતિના દાખલા -->
             <div class="service-card">
                 <div>
                     <div class="service-icon"><i class="fa-solid fa-certificate"></i></div>
-                    <h4>આવક અને જાતિના દાખલા</h4>
+                    <h4>આવક, જાતિ અને Non-Creamy Layer</h4>
                     <p>મામલતદાર કચેરીના આવકના દાખલા, જાતિના દાખલા અને નોન-ક્રીમિલેયર સર્ટિફિકેટ કાઢી આપવાની સેવા.</p>
                 </div>
-                <a href="https://wa.me/919904528938?text=મને%20આવકનો/જાતિનો%20દાખલો%20કાઢવો%20છે" class="btn btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp"></i> અરજી કરો
-                </a>
+                <div class="btn-group">
+                    <a href="https://www.digitalgujarat.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20આવકનો/જાતિનો%20દાખલો%20કાઢવો%20છે" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૭: ચુંટણી કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-check-to-slot"></i></div>
+                    <h4>ચૂંટણી કાર્ડ (Voter ID) સેવાઓ</h4>
+                    <p>નવું ચૂંટણી કાર્ડ બનાવવું, સરનામું કે નામ સુધારવું તથા ઓનલાઇન ડાઉનલોડ કઢાવવું.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://voters.eci.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20ચૂંટણી%20કાર્ડ%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૮: રેશન કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <h4>રેશન કાર્ડ સેવાઓ</h4>
+                    <p>રેશન કાર્ડમાં નામ ઉમેરવું, ઓછું કરવું, નવું રેશન કાર્ડ બનાવવું અથવા નામ ટ્રાન્સફર કરવું.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://dcs-dov.gujarat.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20રેશન%20કાર્ડ%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૯: MSME Udhyam Registration -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
+                    <h4>MSME / ઉદ્યમ રજીસ્ટ્રેશન</h4>
+                    <p>નાના અને મોટા ધંધા-વેપાર માટે સરકારી માન્ય ઉદ્યમ રજીસ્ટ્રેશન (MSME) સર્ટિફિકેટ મેળવો.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://udyamregistration.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20MSME%20રજીસ્ટ્રેશન%20બનાવવું%20છે" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૧૦: PM કિસાન યોજના -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <h4>PM કિસાન સન્માન નિધિ</h4>
+                    <p>ખેડૂતો માટે PM કિસાન યોજનાનું નવું ફોર્મ, e-KYC કરાવવું અને સ્ટેટસ ચેક કરવું.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://pmkisan.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20PM%20કિસાન%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૧૧: ઈ-સમાજ કલ્યાણ યોજનાઓ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-people-hold"></i></div>
+                    <h4>ઈ-સમાજ કલ્યાણ યોજનાઓ</h4>
+                    <p>માનવ ગરિમા યોજના, કુંવરબાઈનું મામેરું, આવાસ યોજના જેવી તમામ સરકારી યોજનાઓના ફોર્મ.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://esamajkalyan.gujarat.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20ઈ-સમાજ%20કલ્યાણ%20યોજના%20વિશે%20જણાવો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૧૨: ડ્રાઇવિંગ લાયસન્સ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-id-badge"></i></div>
+                    <h4>ડ્રાઇવિંગ લાયસન્સ સેવાઓ</h4>
+                    <p>લર્નિંગ લાયસન્સ, પાકું લાયસન્સ, રિન્યુઅલ અને RTO ની તમામ ઓનલાઇન સેવાઓ.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://sarathi.parivahan.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20લાયસન્સ%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૧૩: શિષ્યવૃત્તિ (Scholarship) -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h4>ડિજિટલ ગુજરાત શિષ્યવૃત્તિ</h4>
+                    <p>ધોરણ 10, 12, કોલેજ અને ડિપ્લોમાના વિદ્યાર્થીઓ માટે ઓનલાઇન સ્કોલરશીપના ફોર્મ.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://www.digitalgujarat.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20શિષ્યવૃત્તિ%20ફોર્મ%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૧૪: સરકારી ભરતી ફોર્મ (OJAS) -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h4>સરકારી નોકરી ફોર્મ (OJAS)</h4>
+                    <p>ગુજરાત સરકારની તમામ વર્ગ-૩, તલાટી, પોલીસ, ક્લાર્ક ની ભરતીના ઓનલાઇન ફોર્મ અને કોલ લેટર.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://ojas.gujarat.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20સરકારી%20ભરતી%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૧૫: PF સેવાઓ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <h4>PF (પીએફ) ઉપાડ & KYC</h4>
+                    <p>તમારા PF ખાતામાંથી પૈસા ઉપાડવા, UAN ઓપન કરવું અને KYC સુધારો કરવાની સેવાઓ.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://unifiedportal-mem.epfindia.gov.in/memberinterface/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20PF%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
+            </div>
+
+            <!-- સેવા ૧૬: ગેસ સબસીડી & નવું કનેક્શન -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-fire-flame-simple"></i></div>
+                    <h4>ગેસ કનેક્શન (ઉજ્જવલા યોજના)</h4>
+                    <p>નવું LPG ગેસ કનેક્શન મેળવવું, ઉજ્જવલા યોજના ફોર્મ અને ઈ-કેવાયસી (e-KYC) કરાવવું.</p>
+                </div>
+                <div class="btn-group">
+                    <a href="https://www.pmuy.gov.in/" class="btn btn-direct" target="_blank"><i class="fa-solid fa-globe"></i> ડાયરેક્ટ સાઇટ</a>
+                    <a href="https://wa.me/919904528938?text=મને%20ગેસ%20કનેક્શન%20અંગે%20માહિતી%20આપો" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp"></i> મદદ લો</a>
+                </div>
             </div>
 
         </div>
     </div>
 
-    <!-- વિજેટ્સ સેક્શન (નવા ટૂલ્સ અને અપડેટ્સ) -->
+    <!-- વિજેટ્સ સેક્શન -->
     <div class="container" id="updates">
         <div class="section-title">
             <h3>ઉપયોગી ટૂલ્સ અને અપડેટ્સ</h3>
@@ -698,7 +820,7 @@
             <div class="widget-card">
                 <h4><i class="fa-solid fa-bell"></i> તાજી યોજનાઓ & ભરતી</h4>
                 <ul class="updates-list">
-                    <li><a href="https://wa.me/919904528938?text=માહિતી%20આપો:%20PM%20કિશાન%20હપ્તો" target="_blank">PM કિસાન સન્માન નિધિ ૧૭મો હપ્તો જાહેર <span class="badge-new">નવું</span></a></li>
+                    <li><a href="https://wa.me/919904528938?text=માહિતી%20આપો:%20PM%20કિશાન%20હપ્તો" target="_blank">PM કિસાન સન્માન નિધિ હપ્તો જાહેર <span class="badge-new">નવું</span></a></li>
                     <li><a href="https://wa.me/919904528938?text=માહિતી%20આપો:%20વહાલસોયી%20દિકરી%20યોજના" target="_blank">વહાલી દીકરી યોજના અરજી પ્રક્રિયા શરૂ</a></li>
                     <li><a href="https://wa.me/919904528938?text=માહિતી%20આપો:%20માનવ%20ગરિમા%20યોજના" target="_blank">માનવ ગરિમા યોજના - ટૂલકિટ સહાય ઓનલાઇન ફોર્મ</a></li>
                 </ul>
@@ -730,7 +852,7 @@
                     <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
                     <div>
                         <h4 style="font-size:1rem;">સરનામું</h4>
-                        <p style="font-size:0.9rem; color:var(--text-muted);">અશોક ડિજિટલ સર્વિસ, મુખ્ય બજાર, ગુજરાત</p>
+                        <p style="font-size:0.9rem; color:var(--text-muted);">અશોક ડિજિટલ સર્વિસ, ગુજરાત</p>
                     </div>
                 </div>
 
@@ -851,34 +973,6 @@
 
             document.getElementById('ageResult').innerText = `તમારી ઉંમર: ${ageYears} વર્ષ, ${ageMonths} મહિના, અને ${ageDays} દિવસ`;
         }
-
-        // ૪. મટીરીયલ રિપલ ઇફેક્ટ
-        document.querySelectorAll('.btn, .service-card').forEach(button => {
-            button.addEventListener('click', function (e) {
-                let x = e.clientX - e.target.getBoundingClientRect().left;
-                let y = e.clientY - e.target.getBoundingClientRect().top;
-
-                let ripples = document.createElement('span');
-                ripples.className = 'ripple';
-                ripples.style.left = x + 'px';
-                ripples.style.top = y + 'px';
-                this.appendChild(ripples);
-
-                setTimeout(() => {
-                    ripples.remove();
-                }, 600);
-            });
-        });
-
-        // ૫. સુરક્ષા સેક્શન (Right click અને Copy કંટ્રોલ)
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.onkeydown = function(e) {
-            if (e.keyCode == 123 || 
-               (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || 
-               (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-                return false;
-            }
-        };
     </script>
 </body>
 </html>
