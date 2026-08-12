@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Search Console Verification Tag -->
+    <meta name="google-site-verification" content="Jlt5YIHDLvuQQ3xoocatot7gD53nhIzpaepGr5iUrxk" />
+
+    <!-- SEO Meta Tags -->
+    <title>Ashok Digital Services | બેસ્ટ ઓનલાઈન સરકારી અને ડિજિટલ સેવાઓ</title>
+    <meta name="description" content="Ashok Digital Services - તમામ પ્રકારના સરકારી ઓનલાઈન ફોર્મ, 7/12/8-A ના ઉતારા, MSME ઉદ્યોગ આધાર, ગુમાસ્તા ધારો, PF & ESIC, પાન કાર્ડ, ડ્રાઈવિંગ લાયસન્સ, પાસપોર્ટ, રેશન કાર્ડ અને ITR રીટર્ન માટેનું એકમાત્ર વિશ્વસનીય સ્થળ.">
+    
+    <!-- WhatsApp અને સોશિયલ મીડિયા લિંક પ્રિવ્યૂ (OG Tags) -->
+    <meta property="og:title" content="Ashok Digital Services | બેસ્ટ ઓનલાઈન સરકારી અને ડિજિટલ સેવાઓ" />
+    <meta property="og:description" content="Ashok Digital Services - તમામ પ્રકારના સરકારી ઓનલાઈન ફોર્મ, 7/12/8-A ના ઉતારા, MSME ઉદ્યોગ આધાર, ગુમાસ્તા ધારો, PF & ESIC, પાન કાર્ડ, ડ્રાઈવિંગ લાયસન્સ, પાસપોર્ટ, રેશન કાર્ડ અને ITR રીટર્ન માટેનું એકમાત્ર વિશ્વસનીય સ્થળ." />
+    <meta property="og:url" content="https://ashokdigitalservices.github.io" />
+    <meta property="og:image" content="https://ashokdigitalservices.github.io/166032.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts - Noto Sans Gujarati -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0b4c8c;
+            --secondary-color: #198754;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --bg-main: #f4f6f9;
+            --bg-card: #ffffff;
+            --text-main: #222222;
+            --text-muted: #555555;
+            --border-color: #ced4da;
+        }
+
+        /* ડાર્ક મોડ માટેના કલર્સ */
+        [data-theme="dark"] {
+            --bg-main: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #aaaaaa;
+            --border-color: #444444;
+            --light-color: #2a2a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Gujarati', 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body, html {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+            top: 0 !important;
+            transition: background-color 0.3s, color 0.3s;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        @media print {
+            body { display: none !important; }
+        }
+
+        /* ડાર્ક મોડ ટોગલ બટન */
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            transition: transform 0.2s, color 0.2s;
+        }
+        .theme-toggle-btn:hover { transform: scale(1.15); }
+        [data-theme="dark"] .theme-toggle-btn { color: #ffc107; }
+
+        /* Voice Mic Button Styles */
+        .voice-mic-btn {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+            transition: transform 0.2s, color 0.2s;
+        }
+        .voice-mic-btn:hover { transform: scale(1.15); }
+
+        .btn-login-trigger {
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+        .btn-login-trigger:hover {
+            background: #083868;
+        }
+
+        .lang-selector-container {
+            display: inline-block;
+            position: relative;
+        }
+        .lang-select-custom {
+            padding: 6px 30px 6px 12px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #0b4c8c;
+            border: 2px solid #0b4c8c;
+            border-radius: 6px;
+            background: var(--bg-card);
+            cursor: pointer;
+            outline: none;
+            appearance: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        [data-theme="dark"] .lang-select-custom {
+            color: #fff;
+            border-color: #fff;
+            background: var(--bg-card);
+        }
+
+        header {
+            background: var(--bg-card);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 52px;
+            width: 52px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #0b4c8c;
+            line-height: 1.2;
+        }
+        [data-theme="dark"] .logo-text { color: #fff; }
+        
+        .logo-text span {
+            display: block;
+            font-size: 0.85rem;
+            color: #198754;
+            font-weight: 600;
+        }
+        [data-theme="dark"] .logo-text span { color: #2ae089; }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ticker-wrap {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #ffeeba;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero {
+            background: url('166036.png') no-repeat center center/cover;
+            padding: 120px 20px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .btn-call, .btn-wp, .btn-share-main {
+            color: white;
+            padding: 14px 32px;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .btn-call { background-color: #198754; }
+        .btn-wp { background-color: #25d366; }
+        .btn-share-main { background-color: #ff9800; } 
+
+        .section-padding { padding: 80px 20px; }
+        .bg-light { background-color: var(--light-color); }
+        .bg-white { background-color: var(--bg-card); }
+
+        .section-title {
+            text-align: center;
+            color: #0b4c8c;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .services-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .service-card { background: var(--bg-card); padding: 30px 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid #0b4c8c; transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-4px); border-top-color: #198754; }
+        .icon-box { width: 70px; height: 70px; background: rgba(11, 76, 140, 0.1); color: #0b4c8c; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; }
+
+        .card-action-buttons { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+        .action-link { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 15px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem; transition: background 0.2s; }
+        .btn-action-direct { background-color: #0b4c8c; color: #fff; border: 1px solid #0b4c8c; }
+        .btn-action-direct:hover { background-color: #083868; }
+        .btn-action-info { background-color: #e8f5e9; color: #198754; border: 1px solid #198754; }
+        .btn-action-info:hover { background-color: #c8e6c9; }
+        .btn-action-doc { background-color: #e3f2fd; color: #0b4c8c; border: 1px solid #0b4c8c; cursor: pointer; outline: none; }
+        .btn-action-doc:hover { background-color: #bbdefb; }
+
+        /* Custom Modal Box CSS */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            align-items: center;
+            justify-content: center;
+        }
+        .custom-modal-content {
+            background-color: var(--bg-card);
+            margin: auto;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            position: relative;
+            border-top: 6px solid #0b4c8c;
+            animation: fadeInModal 0.3s ease-in-out;
+        }
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .custom-modal-close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .custom-modal-close:hover { color: #d9534f; }
+        .custom-modal-title {
+            color: #0b4c8c;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .login-input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .login-input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .login-input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            outline: none;
+        }
+        .btn-submit-login {
+            width: 100%;
+            padding: 12px;
+            background: #0b4c8c;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-submit-login:hover { background: #083868; }
+
+        footer { background: #212529; color: #fff; text-align: center; padding: 30px 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Top Announcement Ticker -->
+    <div class="ticker-wrap">
+        <i class="fa-solid fa-bell fa-bounce" style="color: #d9534f;"></i>
+        <marquee behavior="scroll" direction="left">જરૂરી સૂચના: 7/12 અને 8-A ના ઓનલાઈન ઉતારા, ભારતીય રેલવે (Railway Recruitment 2026), આયુષ્માન કાર્ડ (Ayushman Card), પાસપોર્ટ એપ્લિકેશન, સ્કોલરશીપ, પાન કાર્ડ તથા ITR ના ઓનલાઈન ફોર્મ ભરવાનું ચાલુ છે.</marquee>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="navbar">
+            <a href="#home" class="logo-container">
+                <img src="166032.png" alt="Ashok Digital Services Logo" class="logo-img">
+                <div class="logo-text">
+                    ASHOK DIGITAL SERVICES
+                    <span>તમારી ઓનલાઈન ડિજિટલ સહાયક</span>
+                </div>
+            </a>
+            <div class="header-controls">
+                <!-- Login Modal Trigger Button -->
+                <button class="btn-login-trigger" onclick="openLoginModal()">
+                    <i class="fa-solid fa-lock"></i> સાઇટ લોગિન
+                </button>
+
+                <button id="voiceMicBtn" class="voice-mic-btn" onclick="toggleVoiceSearch()" title="બોલીને શોધો">
+                    <i class="fa-solid fa-microphone"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <h1>સરકારી અને ડિજિટલ કામકાજ હવે થયું સરળ અને સુરક્ષિત!</h1>
+            <p>તમામ પ્રકારના ઓનલાઈન ફોર્મ, 7/12/8-A ના ઉતારા, આયુષ્માન કાર્ડ, MSME ઉદ્યોગ આધાર, ગુમાસ્તા ધારો, PF & ESIC, ડ્રાઈવિંગ લાયસન્સ, પાન કાર્ડ, સ્કોલરશીપ ફોર્મ, પાસપોર્ટ અને ઇનકમ ટેક્સ રિટર્ન (ITR) નું કામ ઘરે બેઠા કરો.</p>
+            <div class="cta-buttons">
+                <a href="tel:+919484418910" class="btn-call"><i class="fa-solid fa-phone"></i> કોલ કરો</a>
+                <a href="https://wa.me/919484418910?text=નમસ્તે%20અશોક%20ડિજિટલ%20સર્વિસીસ" target="_blank" class="btn-wp"><i class="fa-brands fa-whatsapp"></i> મેસેજ કરો</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-light">
+        <h2 class="section-title">અમારી મુખ્ય સેવાઓ (Direct Service Portals)</h2>
+        <div class="services-container">
+            
+            <!-- 1. AnyRoR (7/12) -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-file-contract"></i></div>
+                <h3>7/12 / 8-A ના ઉતારા</h3>
+                <p>જમીન તેમજ મિલકતના 7/12 અને 8-A ના અધિકૃત ઉતારા માટે સીધા પોર્ટલ પર જાઓ.</p>
+                <div class="card-action-buttons">
+                    <a href="https://anyror.gujarat.gov.in/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (AnyRoR)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=7/12%20ઉતારા%20અંગે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+            <!-- 2. Digital Gujarat Scholarship -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+                <h3>Digital Gujarat Scholarship</h3>
+                <p>વિદ્યાર્થીઓ માટે સ્કોલરશીપ પોર્ટલ પર સીધા ફોર્મ ભરવા માટે લિંક.</p>
+                <div class="card-action-buttons">
+                    <a href="https://www.digitalgujarat.gov.in/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (Digital Gujarat)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=Scholarship%20Form%20અંગે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+            <!-- 3. Ayushman Bharat -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
+                <h3>આયુષ્માન ભારત CARD</h3>
+                <p>₹૫ લાખ સુધીની મફત સારવાર આપતું આયુષ્માન કાર્ડ પોર્ટલ.</p>
+                <div class="card-action-buttons">
+                    <a href="https://beneficiary.nha.gov.in/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (NHA)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=Ayushman%20Card%20અંગે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+            <!-- 4. MSME Udyam -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-building-shield"></i></div>
+                <h3>MSME ઉદ્યોગ આધાર</h3>
+                <p>બિઝનેસ રજીસ્ટ્રેશન અને ઉદ્યોગ આધાર પોર્ટલ.</p>
+                <div class="card-action-buttons">
+                    <a href="https://udyamregistration.gov.in/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (Udyam)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=MSME%20Udyam%20અંગે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+            <!-- 5. Passport India -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-passport"></i></div>
+                <h3>પાસપોર્ટ એપ્લિકેશન</h3>
+                <p>ઓફિશિયલ પાસપોર્ટ સેવાની વેબસાઈટ પર જાઓ.</p>
+                <div class="card-action-buttons">
+                    <a href="https://www.passportindia.gov.in/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (Passport Portal)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=Passport%20માટે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+            <!-- 6. EPFO / PF -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-piggy-bank"></i></div>
+                <h3>PF (EPFO) સેવાઓ</h3>
+                <p>પીએફ બેલેન્સ, ઉપાડ અને KYC માટેનું પોર્ટલ.</p>
+                <div class="card-action-buttons">
+                    <a href="https://unifiedportal-mem.epfindia.gov.in/memberinterface/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (EPFO Portal)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=PF%20કામ%20અંગે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+            <!-- 7. Parivahan (Driving Licence) -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-id-card"></i></div>
+                <h3>ડ્રાઈવિંગ લાયસન્સ (Parivahan)</h3>
+                <p>RTO લર્નિંગ અને પાકા લાયસન્સ પોર્ટલ.</p>
+                <div class="card-action-buttons">
+                    <a href="https://parivahan.gov.in/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (Parivahan)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=Driving%20Licence%20અંગે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+            <!-- 8. Income Tax Return (ITR) -->
+            <div class="service-card">
+                <div class="icon-box"><i class="fa-solid fa-calculator"></i></div>
+                <h3>ITR & PAN Card</h3>
+                <p>ઇનકમ ટેક્સ રિટર્ન ફાઈલિંગ પોર્ટલ.</p>
+                <div class="card-action-buttons">
+                    <a href="https://www.incometax.gov.in/" target="_blank" class="action-link btn-action-direct">
+                        <i class="fa-solid fa-arrow-right-to-bracket"></i> ડાયરેક્ટ સાઇટ પર જાઓ (E-Filing)
+                    </a>
+                    <a href="https://wa.me/919484418910?text=ITR%20Return%20અંગે" target="_blank" class="action-link btn-action-info"><i class="fa-brands fa-whatsapp"></i> WhatsApp પર કામ કરાવો</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- સિક્યોર આઈડી/પાસવર્ડ લોગિન મોડલ (Login Popup Box) -->
+    <div id="loginModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <span class="custom-modal-close" onclick="closeLoginModal()">&times;</span>
+            <div class="custom-modal-title"><i class="fa-solid fa-user-lock"></i> સિક્યોર પોર્ટલ લોગિન</div>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="login-input-group">
+                    <label for="adminUser">યુઝર આઈડી (ID)</label>
+                    <input type="text" id="adminUser" placeholder="તમારું ID લખો..." required>
+                </div>
+                <div class="login-input-group">
+                    <label for="adminPass">પાસવર્ડ (Password)</label>
+                    <input type="password" id="adminPass" placeholder="પાસવર્ડ લખો..." required>
+                </div>
+                <button type="submit" class="btn-submit-login">
+                    <i class="fa-solid fa-right-to-bracket"></i> લોગિન કરો
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Ashok Digital Services. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Modal Open/Close Controls
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        // Handle Login Verification
+        function handleLogin(event) {
+            event.preventDefault();
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+
+            // અહી તમે તમારો ID અને Password સેટ કરી શકો છો
+            if(user === "admin" && pass === "123") {
+                alert("લોગિન સફળ થયું! તમારું સિક્યોર સેશન શરૂ થઈ ગયું છે.");
+                closeLoginModal();
+                // અહીં તમે સફળ લોગિન પછી જે પોર્ટલ કે પેજ ખોલવું હોય તેની લિંક આપી શકો છો
+            } else {
+                alert("ખોટો ID અથવા Password! કૃપા કરીને ફરી પ્રયાસ કરો.");
+            }
+        }
+
+        // Close Modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('loginModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
