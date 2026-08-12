@@ -119,24 +119,14 @@
             display: none;
         }
 
-        /* સ્ક્રીન પર ટેક્સ્ટ રૂપે OTP બતાવવા માટે બોક્સ */
-        .otp-display-box {
+        .otp-info-box {
             background-color: #e8f4fd;
             border: 1px dashed var(--primary-color);
             padding: 12px;
             border-radius: 6px;
             margin-bottom: 15px;
             color: #000;
-            font-size: 0.95rem;
-        }
-
-        .otp-number {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #d9534f;
-            letter-spacing: 2px;
-            display: block;
-            margin-top: 4px;
+            font-size: 0.9rem;
         }
 
         .otp-step {
@@ -246,7 +236,7 @@
         }
 
         .doc-box strong {
-            display: block;
+            display block;
             color: var(--primary-color);
             margin-bottom: 4px;
         }
@@ -316,18 +306,17 @@
                 <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
             </div>
 
-            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન (સ્ક્રીન પર ટેક્સ્ટ રૂપે) -->
+            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન (ટેલિગ્રામ દ્વારા ઓટીપી જશે) -->
             <div id="stepOtp" class="otp-step">
                 <h2>OTP વેરિફિકેશન</h2>
                 
-                <div class="otp-display-box">
-                    મોબાઈલ નંબર <b>9484418910</b> પર OTP મોકલવામાં આવ્યો છે.
-                    <span class="otp-number">તમારો OTP છે: <span id="generatedOtpText">------</span></span>
+                <div class="otp-info-box">
+                    તમારા મોબાઈલમાં Telegram પર <b>OTP મોકલવામાં આવ્યો છે</b>. કૃપા કરીને ચેક કરીને નીચે દાખલ કરો.
                 </div>
 
                 <div class="input-group">
                     <label for="otpInput">Enter OTP</label>
-                    <input type="text" id="otpInput" maxlength="6" placeholder="ઉપર બતાવેલ OTP નાખો">
+                    <input type="text" id="otpInput" maxlength="6" placeholder="મોબાઈલ પર આવેલ OTP નાખો">
                 </div>
                 <button class="btn-login" onclick="verifyOTP()">લોગિન કરો</button>
                 <p id="error2" class="error-msg">ખોટો OTP! ફરી પ્રયત્ન કરો.</p>
@@ -465,290 +454,6 @@
                     <a href="https://foscos.fssai.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
                 </div>
 
-                <!-- ૭. ટ્રેડમાર્ક -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-copyright"></i></div>
-                        <h3>ટ્રેડમાર્ક રજિસ્ટ્રેશન (Trademark)</h3>
-                        <p>તમારા બ્રાન્ડ નેમ, લોગો અથવા વ્યવસાયના નામનું ટ્રેડમાર્ક રજિસ્ટ્રેશન.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>બ્રાન્ડ લોગો કે નામની વિગત</li>
-                                <li>માલિકનું આધાર અને પાન કાર્ડ</li>
-                                <li>બિઝનેસ રજિસ્ટ્રેશન / MSME સર્ટિફિકેટ</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://ipindiaonline.gov.in/trademarkonline/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૮. જમીનના દસ્તાવેજો -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                        <h3>જમીનના દસ્તાવેજો (7/12 & 8-A)</h3>
-                        <p>જમીનના 7/12, 8-A અને હક પત્રક (6 નંબર) ની નકલો મેળવો.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>ખાતા નંબર અથવા સર્વે નંબર</li>
-                                <li>ગામનું નામ અને તાલુકો</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://anyror.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૯. આયુષ્માન ભારત કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-hospital-user"></i></div>
-                        <h3>આયુષ્માન ભારત કાર્ડ (PM-JAY)</h3>
-                        <p>રૂ. 10 લાખ સુધીની મફત સારવાર માટેનું આયુષ્માન કાર્ડ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>રેશન કાર્ડ અને આધાર કાર્ડ</li>
-                                <li>આવકનો દાખલો</li>
-                                <li>મોબાઈલ નંબર</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://beneficiary.nha.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૦. ઇ-શ્રમ કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-user-gear"></i></div>
-                        <h3>ઇ-શ્રમ કાર્ડ (e-Shram)</h3>
-                        <p>અસંગઠિત ક્ષેત્રના કામદારો માટે ઇ-શ્રમ રજિસ્ટ્રેશન.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>બેંક પાસબુક</li>
-                                <li>આધાર સાથે લિંક મોબાઈલ નંબર</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://eshram.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૧. પાસપોર્ટ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-plane"></i></div>
-                        <h3>પાસપોર્ટ સેવા (Passport)</h3>
-                        <p>નવા પાસપોર્ટ અરજી અને એપોઇન્ટમેન્ટ બુકિંગ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
-                                <li>10મા ધોરણની માર્કશીટ / જન્મ દાખલો</li>
-                                <li>બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.passportindia.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૨. આવક / જાતિના દાખલા -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-certificate"></i></div>
-                        <h3>આવક / જાતિના દાખલા</h3>
-                        <p>આવકનો દાખલો, જાતિનો દાખલો અને Non-Creamy Layer સર્ટિફિકેટ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને રેશન કાર્ડ</li>
-                                <li>લાઇટ બિલ / વેરા બિલ</li>
-                                <li>તલાટીનો આવકનો દાખલો / સોગંદનામું</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.digitalgujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૩. ચૂંટણી કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-check-to-slot"></i></div>
-                        <h3>ચૂંટણી કાર્ડ (Voter ID)</h3>
-                        <p>નવું ચૂંટણી કાર્ડ, સરનામું સુધારો અને ડાઉનલોડ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>૧ પાસપોર્ટ સાઇઝ ફોટો</li>
-                                <li>રહેઠાણનો પુરાવો (લાઇટ બિલ)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://voters.eci.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૪. રેશન કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-wheat-awn"></i></div>
-                        <h3>રેશન કાર્ડ સેવાઓ</h3>
-                        <p>રેશન કાર્ડમાં નામ ઉમેરવું, ઓછું કરવું અથવા નવું કઢાવવું.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>જૂનું રેશન કાર્ડ</li>
-                                <li>નવા સભ્યનું આધાર કાર્ડ / જન્મ દાખલો</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://ipds.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૫. MSME -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
-                        <h3>MSME / ઉદ્યમ રજીસ્ટ્રેશન</h3>
-                        <p>ધંધા-વેપાર માટે સરકારી ઉદ્યમ રજીસ્ટ્રેશન સર્ટિફિકેટ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
-                                <li>બિઝનેસ વિગત અને બેંક એકાઉન્ટ</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://udyamregistration.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૬. PM કિસાન -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                        <h3>PM કિસાન સન્માન નિધિ</h3>
-                        <p>PM કિસાન યોજનાનું ફોર્મ અને e-KYC કરવા માટે.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>જમીનના 7/12 & 8-A</li>
-                                <li>આધાર કાર્ડ અને બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://pmkisan.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૭. ઈ-સમાજ કલ્યાણ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-people-hold"></i></div>
-                        <h3>ઈ-સમાજ કલ્યાણ યોજનાઓ</h3>
-                        <p>માનવ ગરિમા યોજના, કુંવરબાઈનું મામેરું અને અન્ય સરકારી સહાય.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને રેશન કાર્ડ</li>
-                                <li>આવક અને જાતિનો દાખલો</li>
-                                <li>બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://esamajkalyan.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૮. ડ્રાઇવિંગ લાયસન્સ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
-                        <h3>ડ્રાઇવિંગ લાયસન્સ સેવાઓ</h3>
-                        <p>લર્નિંગ અને પાકા લાયસન્સ માટે ઓનલાઇન અરજી.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>શાળા છોડ્યાનું પ્રમાણપત્ર / જન્મ દાખલો</li>
-                                <li>ફોટો અને સહી</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://sarathi.parivahan.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૯. શિષ્યવૃત્તિ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <h3>ડિજિટલ ગુજરાત શિષ્યવૃત્તિ</h3>
-                        <p>વિદ્યાર્થીઓ માટે સરકારી સ્કોલરશીપના ઓનલાઇન ફોર્મ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>માર્કશીટ અને ફી પહોંચ</li>
-                                <li>આવક અને જાતિનો દાખલો</li>
-                                <li>આધાર કાર્ડ અને બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.digitalgujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૨૦. સરકારી ભરતી OJAS -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
-                        <h3>સરકારી નોકરી ફોર્મ (OJAS)</h3>
-                        <p>ગુજરાત સરકારની તમામ ભરતીના ઓનલાઇન ફોર્મ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>શૈક્ષણિક માર્કશીટ્સ</li>
-                                <li>જાતિનો દાખલો / ક્રીમિલેયર</li>
-                                <li>ફોટો અને સહી</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://ojas.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૨૧. PF સેવાઓ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-piggy-bank"></i></div>
-                        <h3>PF (પીએફ) ઉપાડ & KYC</h3>
-                        <p>PF એકાઉન્ટમાંથી ઓનલાઇન પૈસા ઉપાડવા અને KYC.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>UAN નંબર અને પાસવર્ડ</li>
-                                <li>આધાર કાર્ડ, પાન કાર્ડ</li>
-                                <li>કેન્સલ ચેક / બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://unifiedportal-mem.epfindia.gov.in/memberinterface/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૨૨. ગેસ કનેક્શન -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-fire-flame-simple"></i></div>
-                        <h3>ગેસ કનેક્શન (ઉજ્જવલા યોજના)</h3>
-                        <p>નવું LPG ગેસ કનેક્શન અને e-KYC પ્રક્રિયા.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>રેશન કાર્ડ અને આધાર કાર્ડ</li>
-                                <li>બેંક પાસબુક</li>
-                                <li>પાસપોર્ટ સાઇઝ ફોટો</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.pmuy.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
             </div>
         </div>
 
@@ -764,7 +469,11 @@
         const correctPass = "Raval@.2001";
         let generatedOTP = "";
 
-        // ૧. Random 6 અંકનો OTP જનરેટ કરવો અને સ્ક્રીન પર બતાવવો
+        // TELEGRAM BOT CONFIGURATION (અહીં તમારી વિગતો બદલો)
+        const telegramBotToken = "YOUR_TELEGRAM_BOT_TOKEN"; // દા.ત. "123456789:ABCdef..."
+        const telegramChatId = "YOUR_TELEGRAM_CHAT_ID";     // દા.ત. "987654321"
+
+        // ૧. ID-Password ચકાસીને Telegram પર OTP મોકલવો
         function verifyCredentials() {
             const enteredID = document.getElementById("userId").value.trim();
             const enteredPass = document.getElementById("userPass").value.trim();
@@ -773,17 +482,32 @@
             if (enteredID === correctID && enteredPass === correctPass) {
                 error1.style.display = "none";
                 
-                // ૬ અંકનો રેન્ડમ OTP બનાવો
+                // ૬ અંકનો રેન્ડમ OTP જનરેટ કરવો
                 generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
                 
-                // alert() ની જગ્યાએ સ્ક્રીન પરના HTML માં OTP બતાવો
-                document.getElementById("generatedOtpText").innerText = generatedOTP;
+                // Telegram API દ્વારા મોબાઈલ પર મેસેજ મોકલવો
+                sendTelegramOTP(generatedOTP);
 
                 document.getElementById("stepLogin").style.display = "none";
                 document.getElementById("stepOtp").style.display = "block";
             } else {
                 error1.style.display = "block";
             }
+        }
+
+        // Telegram Bot API Call Function
+        function sendTelegramOTP(otp) {
+            const textMessage = `🔐 ASHOK DIGITAL SERVICES\n\nતમારો લૉગિન OTP છે: ${otp}\n(આ OTP કોઈની સાથે શેર કરશો નહીં)`;
+            const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(textMessage)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("OTP Sent via Telegram:", data);
+                })
+                .catch(error => {
+                    console.error("Telegram API Error:", error);
+                });
         }
 
         // ૨. OTP ચકાસણી અને લોગિન
