@@ -236,7 +236,7 @@
         }
 
         .doc-box strong {
-            display block;
+            display: block;
             color: var(--primary-color);
             margin-bottom: 4px;
         }
@@ -352,12 +352,11 @@
                         <div class="doc-box">
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>વોટર કાર્ડ અથવા જન્મ પ્રમાણપત્ર</li>
+                                <li>ઓળખનો પુરાવો (દા.ત. આધાર કાર્ડ)</li>
+                                <li>જન્મ તારીખનો પુરાવો</li>
                                 <li>૨ પાસપોર્ટ સાઈઝ ફોટા</li>
                                 <li>અરજદારની સહી</li>
                                 <li>ઈમેલ ID & મોબાઈલ નંબર</li>
-                                <li>પપ્પાનું આધાર કાર્ડ (માત્ર સગીર/Minor બાળક માટે)</li>
                             </ul>
                         </div>
                     </div>
@@ -373,8 +372,8 @@
                         <div class="doc-box">
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
-                                <li>હાલનું પાન કાર્ડ અને આધાર કાર્ડ</li>
-                                <li>સુધારા માટેનો યોગ્ય પુરાવો (જેમ કે ગેઝેટ/ઓળખપત્ર)</li>
+                                <li>હાલનું પાન કાર્ડ અને ઓળખનો પુરાવો</li>
+                                <li>સુધારા માટેનો યોગ્ય પુરાવો</li>
                                 <li>મોબાઈલ નંબર (OTP સંચાર માટે)</li>
                             </ul>
                         </div>
@@ -387,12 +386,12 @@
                     <div>
                         <div class="service-icon"><i class="fa-solid fa-calculator"></i></div>
                         <h3>ઇન્કમ ટેક્સ લોગિન (Income Tax e-Filing)</h3>
-                        <p>ITR ફાઈલ કરવા, પાન-આધાર લિંક સ્ટેટસ ચકાસવા અને ઈ-ફાઈલિંગ સેવાઓ માટે.</p>
+                        <p>ITR ફાઈલ કરવા, પાન લિંક સ્ટેટસ ચકાસવા અને ઈ-ફાઈલિંગ સેવાઓ માટે.</p>
                         <div class="doc-box">
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
                                 <li>પાન કાર્ડ નંબર અને પાસવર્ડ</li>
-                                <li>આધાર કાર્ડ અને મોબાઈલ નંબર (OTP માટે)</li>
+                                <li>મોબાઈલ નંબર (OTP માટે)</li>
                                 <li>બેંક એકાઉન્ટની વિગતો / Form 26AS</li>
                             </ul>
                         </div>
@@ -409,7 +408,7 @@
                         <div class="doc-box">
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
-                                <li>માલિકનું આધાર કાર્ડ અને પાન કાર્ડ</li>
+                                <li>માલિકનો ઓળખનો પુરાવો અને પાન કાર્ડ</li>
                                 <li>દુકાનનો ફોટો (બોર્ડ સાથે)</li>
                                 <li>લાઇટ બિલ અથવા ભાડા કરાર</li>
                             </ul>
@@ -427,7 +426,7 @@
                         <div class="doc-box">
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
-                                <li>આધાર નંબર અથવા એનરોલમેન્ટ સ્લિપ</li>
+                                <li>એનરોલમેન્ટ સ્લિપ અથવા ઓળખ વિગતો</li>
                                 <li>લિંક થયેલ મોબાઈલ નંબર (OTP માટે)</li>
                                 <li>સરનામા સુધારા માટે લાઈટ બિલ/રેશનકાર્ડ</li>
                             </ul>
@@ -446,7 +445,7 @@
                             <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
                             <ul>
                                 <li>માલિકનો પાસપોર્ટ સાઇઝ ફોટો</li>
-                                <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
+                                <li>ઓળખનો પુરાવો અને પાન કાર્ડ</li>
                                 <li>દુકાનનું સરનામાનું પ્રમાણપત્ર / ભાડા કરાર</li>
                             </ul>
                         </div>
@@ -469,9 +468,9 @@
         const correctPass = "Raval@.2001";
         let generatedOTP = "";
 
-        // TELEGRAM BOT CONFIGURATION (અહીં તમારી વિગતો બદલો)
-        const telegramBotToken = "YOUR_TELEGRAM_BOT_TOKEN"; // દા.ત. "123456789:ABCdef..."
-        const telegramChatId = "YOUR_TELEGRAM_CHAT_ID";     // દા.ત. "987654321"
+        // TELEGRAM BOT CONFIGURATION
+        const telegramBotToken = "YOUR_TELEGRAM_BOT_TOKEN"; // અહીં તમારો Bot Token પેસ્ટ કરો
+        const telegramChatId = "6564718271";                 // તમારો Chat ID સેટ કરી દીધો છે
 
         // ૧. ID-Password ચકાસીને Telegram પર OTP મોકલવો
         function verifyCredentials() {
