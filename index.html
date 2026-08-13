@@ -894,23 +894,22 @@
         <p>© 2026 ASHOK DIGITAL SERVICES. All Rights Reserved.</p>
     </footer>
 
-    <!-- ૫. સિક્યોરિટી અને ઓટો-લોગઆઉટ સ્ક્રિપ્ટ -->
+    <!-- ૫. સિક્યોરિટી અને ઇન્સ્ટન્ટ ઓટો-લોગઆઉટ સ્ક્રિપ્ટ -->
     <script>
-        // પેજ લોડ થાય ત્યારે લોગિન સ્ટેટસ ચકાસવું (sessionStorage નો ઉપયોગ - જેથી ટેબ બંધ થતાં ઓટો લોગઆઉટ થાય)
-        window.onload = function() {
+        // પેજ લોડ થાય ત્યારે લોગિન સ્ટેટસ ચેક કરવું
+        window.addEventListener('DOMContentLoaded', function() {
             if (sessionStorage.getItem("isLoggedIn") === "true") {
                 document.getElementById("login-overlay").style.display = "none";
             } else {
                 document.getElementById("login-overlay").style.display = "flex";
             }
-        };
+        });
 
-        // લોગિન વિગતો ચકાસવી
+        // લોગિન ચકાસણી
         function checkLogin() {
             var id = document.getElementById("userId").value;
             var pass = document.getElementById("userPass").value;
 
-            // અપડેટ કરેલો ID અને Password
             if (id === "30062001" && pass === "Raval@.2001") {
                 sessionStorage.setItem("isLoggedIn", "true");
                 document.getElementById("login-overlay").style.display = "none";
@@ -922,9 +921,18 @@
 
         // મેન્યુઅલ લોગઆઉટ ફંકશન
         function manualLogout() {
-            sessionStorage.removeItem("isLoggedIn");
+            sessionStorage.clear();
             location.reload();
         }
+
+        // સાઇટ/ટેબની બહાર નીકળતી વખતે અથવા બ્રાઉઝર બંધ કરતી વખતે તરત લોગઆઉટ થઈ જવું
+        window.addEventListener('beforeunload', function() {
+            sessionStorage.clear();
+        });
+
+        window.addEventListener('pagehide', function() {
+            sessionStorage.clear();
+        });
     </script>
 </body>
 </html>
