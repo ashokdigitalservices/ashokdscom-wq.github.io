@@ -38,14 +38,14 @@
             padding-bottom: 40px;
         }
 
-        /* --- LOGIN MODAL STYLING --- */
-        #loginOverlay {
+        /* લોગિન પોપઅપ CSS */
+        #login-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(11, 76, 140, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,84 +53,52 @@
         }
 
         .login-box {
-            background: #ffffff;
+            background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            width: 90%;
-            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             text-align: center;
+            width: 320px;
         }
 
         .login-box h2 {
             color: var(--primary-color);
             margin-bottom: 15px;
-            font-size: 1.5rem;
         }
 
-        .login-box p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--primary-color);
-        }
-
-        .input-group input {
+        .login-box input {
             width: 100%;
             padding: 10px;
-            border: 1px solid var(--border-color);
+            margin: 10px 0;
+            border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1rem;
         }
 
-        .btn-login {
+        .login-box button {
             width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
+            padding: 10px;
+            background: #28a745;
             color: white;
             border: none;
+            cursor: pointer;
             border-radius: 5px;
             font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-login:hover {
-            background-color: #083868;
-        }
-
-        .error-msg {
-            color: red;
-            font-size: 0.85rem;
+            font-weight: bold;
             margin-top: 10px;
-            display: none;
         }
 
-        /* --- WEBSITE STYLING --- */
-        #mainContent {
-            display: none; /* Login કર્યા પછી જ દેખાશે */
+        .login-box button:hover {
+            background: #218838;
         }
 
+        /* વેબસાઇટ ડિઝાઇન CSS */
         header {
             background-color: var(--primary-color);
             color: white;
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            position: relative;
         }
 
         .brand-name h1 {
@@ -143,19 +111,6 @@
             font-size: 0.95rem;
             opacity: 0.9;
             margin-top: 5px;
-        }
-
-        .logout-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
         }
 
         .container {
@@ -261,509 +216,638 @@
 
         @media (max-width: 768px) {
             .brand-name h1 {
-                font-size: 1.4rem;
-            }
-            .logout-btn {
-                position: static;
-                margin-top: 10px;
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ૧. લોગિન પોપ-અપ -->
-    <div id="loginOverlay">
+    <!-- ૧. લોગિન પોપઅપ -->
+    <div id="login-overlay">
         <div class="login-box">
+            <h2>લોગિન કરો</h2>
+            <input type="text" id="userId" placeholder="ID દાખલ કરો">
+            <input type="password" id="userPass" placeholder="પાસવર્ડ દાખલ કરો">
+            <button onclick="checkLogin()">લોગિન</button>
+            <p id="error-msg" style="color:red; margin-top:10px; display:none;">ખોટું ID અથવા પાસવર્ડ!</p>
+        </div>
+    </div>
+
+    <!-- ૨. હેડર -->
+    <header>
+        <div class="brand-name">
+            <h1>ASHOK DIGITAL SERVICES</h1>
+            <p>તમામ ઓનલાઇન સરકારી સેવાઓ અને ડાયરેક્ટ લિંક્સ</p>
+        </div>
+    </header>
+
+    <!-- ૩. સેવાઓ સેક્શન (કુલ ૩૨ સેવાઓ) -->
+    <div class="container">
+        <div class="section-title">
+            <h2>અમારી સંપૂર્ણ સેવાઓ & જરૂરી દસ્તાવેજો</h2>
+        </div>
+
+        <div class="services-grid">
             
-            <div id="stepLogin">
-                <h2>સિક્યોર લોગિન</h2>
-                <p>ASHOK DIGITAL SERVICES માં પ્રવેશવા માટે ID અને પાસવર્ડ નાખો</p>
-                <div class="input-group">
-                    <label for="userId">User ID</label>
-                    <input type="text" id="userId" placeholder="ID આપો">
+            <!-- ૧. નવું NSDL પાન કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-address-card"></i></div>
+                    <h3>નવું NSDL પાન કાર્ડ</h3>
+                    <p>ઓનલાઇન નવું પાન કાર્ડ કઢાવવા માટે નવી અરજી (Protean NSDL).</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ</li>
+                            <li>વોટર કાર્ડ અથવા જન્મ પ્રમાણપત્ર</li>
+                            <li>૨ પાસપોર્ટ સાઈઝ ફોટા</li>
+                            <li>અરજદારની સહી</li>
+                            <li>ઈમેલ ID & મોબાઈલ નંબર</li>
+                            <li>પપ્પાનું આધાર કાર્ડ (માત્ર સગીર/Minor બાળક માટે)</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="input-group">
-                    <label for="userPass">Password</label>
-                    <input type="password" id="userPass" placeholder="Password આપો">
+                <a href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨. નવું UTI પાન કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                    <h3>નવું UTI પાન કાર્ડ</h3>
+                    <p>UTITSL પોર્ટલ દ્વારા પાન કાર્ડ અપ્લાય, સુધારો અથવા e-PAN સેવાઓ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>હાલનું પાન કાર્ડ અને આધાર કાર્ડ</li>
+                            <li>સુધારા માટેનો યોગ્ય પુરાવો (જેમ કે ગેઝેટ/ઓળખપત્ર)</li>
+                            <li>મોબાઈલ નંબર (OTP સંચાર માટે)</li>
+                        </ul>
+                    </div>
                 </div>
-                <button class="btn-login" onclick="verifyCredentials()">લોગિન કરો</button>
-                <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
+                <a href="https://www.pan.utiitsl.com/PAN/csf.html" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> UTI ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૩. ઇન્કમ ટેક્સ લોગિન -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-calculator"></i></div>
+                    <h3>ઇન્કમ ટેક્સ લોગિન (Income Tax e-Filing)</h3>
+                    <p>ITR ફાઈલ કરવા, પાન-આધાર લિંક સ્ટેટસ ચકાસવા અને ઈ-ફાઈલિંગ સેવાઓ માટે.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>પાન કાર્ડ નંબર અને પાસવર્ડ</li>
+                            <li>આધાર કાર્ડ અને મોબાઈલ નંબર (OTP માટે)</li>
+                            <li>બેંક એકાઉન્ટની વિગતો / Form 26AS</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://eportal.incometax.gov.in/iec/foservices/#/login" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૪. ગુમાસ્તા ધારો -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-store"></i></div>
+                    <h3>ગુમાસ્તા ધારો (Shop Act License)</h3>
+                    <p>નવી દુકાન, ઓફિસ કે બિઝનેસ રજિસ્ટ્રેશન માટે શોપ એક્ટ લાયસન્સ (e-Nagar Portal).</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>માલિકનું આધાર કાર્ડ અને પાન કાર્ડ</li>
+                            <li>દુકાનનો ફોટો (બોર્ડ સાથે)</li>
+                            <li>લાઇટ બિલ અથવા ભાડા કરાર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://enagar.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૫. આધાર કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-id-badge"></i></div>
+                    <h3>આધાર કાર્ડ સેવાઓ (Aadhaar Services)</h3>
+                    <p>આધાર કાર્ડ ડાઉનલોડ કરવું, સરનામું બદલવું, મોબાઈલ નંબર સ્ટેટસ અને PVC કાર્ડ ડાઉનલોડ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર નંબર અથવા એનરોલમેન્ટ સ્લિપ</li>
+                            <li>લિંક થયેલ મોબાઈલ નંબર (OTP માટે)</li>
+                            <li>સરનામા સુધારા માટે લાઈટ બિલ/રેશનકાર્ડ</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://myaadhaar.uidai.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૬. FSSAI ફૂડ લાયસન્સ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+                    <h3>FSSAI ફૂડ લાયસન્સ (FASSAI Certificate)</h3>
+                    <p>દુકાન, રેસ્ટોરન્ટ કે ખાદ્યપદાર્થના વ્યવસાય માટે FSSAI રજિસ્ટ્રેશન અને લાયસન્સ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>માલિકનો પાસપોર્ટ સાઇઝ ફોટો</li>
+                            <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
+                            <li>દુકાનનું સરનામાનું પ્રમાણપત્ર / ભાડા કરાર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://foscos.fssai.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૭. ટ્રેડમાર્ક -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-copyright"></i></div>
+                    <h3>ટ્રેડમાર્ક રજિસ્ટ્રેશન (Trademark)</h3>
+                    <p>તમારા બ્રાન્ડ નેમ, લોગો અથવા વ્યવસાયના નામનું ટ્રેડમાર્ક રજિસ્ટ્રેશન.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>બ્રાન્ડ લોગો કે નામની વિગત</li>
+                            <li>માલિકનું આધાર અને પાન કાર્ડ</li>
+                            <li>બિઝનેસ રજિસ્ટ્રેશન / MSME સર્ટિફિકેટ</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://ipindiaonline.gov.in/trademarkonline/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૮. જમીનના દસ્તાવેજો -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
+                    <h3>જમીનના દસ્તાવેજો (7/12 & 8-A)</h3>
+                    <p>જમીનના 7/12, 8-A અને હક પત્રક (6 નંબર) ની નકલો મેળવો.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>ખાતા નંબર અથવા સર્વે નંબર</li>
+                            <li>ગામનું નામ અને તાલુકો</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://anyror.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૯. આયુષ્માન ભારત કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-hospital-user"></i></div>
+                    <h3>આયુષ્માન ભારત કાર્ડ (PM-JAY)</h3>
+                    <p>રૂ. 10 લાખ સુધીની મફત સારવાર માટેનું આયુષ્માન કાર્ડ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>રેશન કાર્ડ અને આધાર કાર્ડ</li>
+                            <li>આવકનો દાખલો</li>
+                            <li>મોબાઈલ નંબર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://beneficiary.nha.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૦. ઇ-શ્રમ કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-user-gear"></i></div>
+                    <h3>ઇ-શ્રમ કાર્ડ (e-Shram)</h3>
+                    <p>અસંગઠિત ક્ષેત્રના કામદારો માટે ઇ-શ્રમ રજિસ્ટ્રેશન.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ</li>
+                            <li>બેંક પાસબુક</li>
+                            <li>આધાર સાથે લિંક મોબાઈલ નંબર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://eshram.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૧. પાસપોર્ટ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-plane"></i></div>
+                    <h3>પાસપોર્ટ સેવા (Passport)</h3>
+                    <p>નવા પાસપોર્ટ અરજી અને એપોઇન્ટમેન્ટ બુકિંગ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
+                            <li>10મા ધોરણની માર્કશીટ / જન્મ દાખલો</li>
+                            <li>બેંક પાસબુક</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.passportindia.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૨. આવક / જાતિના દાખલા -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-certificate"></i></div>
+                    <h3>આવક / જાતિના દાખલા</h3>
+                    <p>આવકનો દાખલો, જાતિનો દાખલો અને Non-Creamy Layer સર્ટિફિકેટ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ અને રેશન કાર્ડ</li>
+                            <li>લાઇટ બિલ / વેરા બિલ</li>
+                            <li>તલાટીનો આવકનો દાખલો / સોગંદનામું</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.digitalgujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૩. ચૂંટણી કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-check-to-slot"></i></div>
+                    <h3>ચૂંટણી કાર્ડ (Voter ID)</h3>
+                    <p>નવું ચૂંટણી કાર્ડ, સરનામું સુધારો અને ડાઉનલોડ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ</li>
+                            <li>૧ પાસપોર્ટ સાઇઝ ફોટો</li>
+                            <li>રહેઠાણનો પુરાવો (લાઇટ બિલ)</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://voters.eci.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૪. રેશન કાર્ડ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <h3>રેશન કાર્ડ સેવાઓ</h3>
+                    <p>રેશન કાર્ડમાં નામ ઉમેરવું, ઓછું કરવું અથવા નવું કઢાવવું.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>જૂનું રેશન કાર્ડ</li>
+                            <li>નવા સભ્યનું આધાર કાર્ડ / જન્મ દાખલો</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://ipds.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૫. MSME -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
+                    <h3>MSME / ઉદ્યમ રજીસ્ટ્રેશન</h3>
+                    <p>ધંધા-વેપાર માટે સરકારી ઉદ્યમ રજીસ્ટ્રેશન સર્ટિફિકેટ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
+                            <li>બિઝનેસ વિગત અને બેંક એકાઉન્ટ</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://udyamregistration.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૬. PM કિસાન -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                    <h3>PM કિસાન સન્માન નિધિ</h3>
+                    <p>PM કિસાન યોજનાનું ફોર્મ અને e-KYC કરવા માટે.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>જમીનના 7/12 & 8-A</li>
+                            <li>આધાર કાર્ડ અને બેંક પાસબુક</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://pmkisan.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૭. ઈ-સમાજ કલ્યાણ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-people-hold"></i></div>
+                    <h3>ઈ-સમાજ કલ્યાણ યોજનાઓ</h3>
+                    <p>માનવ ગરિમા યોજના, કુંવરબાઈનું મામેરું અને અન્ય સરકારી સહાય.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ અને રેશન કાર્ડ</li>
+                            <li>આવક અને જાતિનો દાખલો</li>
+                            <li>બેંક પાસબુક</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://esamajkalyan.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૮. ડ્રાઇવિંગ લાયસન્સ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
+                    <h3>ડ્રાઇવિંગ લાયસન્સ સેવાઓ</h3>
+                    <p>લર્નિંગ અને પાકા લાયસન્સ માટે ઓનલાઇન અરજી.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ</li>
+                            <li>શાળા છોડ્યાનું પ્રમાણપત્ર / જન્મ દાખલો</li>
+                            <li>ફોટો અને સહી</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://sarathi.parivahan.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૧૯. શિષ્યવૃત્તિ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>ડિજિટલ ગુજરાત શિષ્યવૃત્તિ</h3>
+                    <p>વિદ્યાર્થીઓ માટે સરકારી સ્કોલરશીપના ઓનલાઇન ફોર્મ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>માર્કશીટ અને ફી પહોંચ</li>
+                            <li>આવક અને જાતિનો દાખલો</li>
+                            <li>આધાર કાર્ડ અને બેંક પાસબુક</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.digitalgujarat.gov.in/loginapp/CitizenLogin.aspx" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૦. સરકારી ભરતી OJAS -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>સરકારી નોકરી ફોર્મ (OJAS)</h3>
+                    <p>ગુજરાત સરકારની તમામ ભરતીના ઓનલાઇન ફોર્મ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>શૈક્ષણિક માર્કશીટ્સ</li>
+                            <li>જાતિનો દાખલો / ક્રીમિલેયર</li>
+                            <li>ફોટો અને સહી</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://ojas.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૧. PF સેવાઓ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <h3>PF (પીએફ) ઉપાડ & KYC</h3>
+                    <p>PF એકાઉન્ટમાંથી ઓનલાઇન પૈસા ઉપાડવા અને KYC.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>UAN નંબર અને પાસવર્ડ</li>
+                            <li>આધાર કાર્ડ, પાન કાર્ડ</li>
+                            <li>કેન્સલ ચેક / બેંક પાસબુક</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://unifiedportal-mem.epfindia.gov.in/memberinterface/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૨. ગેસ કનેક્શન -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-fire-flame-simple"></i></div>
+                    <h3>ગેસ કનેક્શન (ઉજ્જવલા યોજના)</h3>
+                    <p>નવું LPG ગેસ કનેક્શન અને e-KYC પ્રક્રિયા.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>રેશન કાર્ડ અને આધાર કાર્ડ</li>
+                            <li>બેંક પાસબુક</li>
+                            <li>પાસપોર્ટ સાઇઝ ફોટો</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.pmuy.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૩. PM સૂર્ય ઘર -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-solar-panel"></i></div>
+                    <h3>PM સૂર્ય ઘર (Solar Rooftop)</h3>
+                    <p>મફત વીજળી યોજના અને સોલાર રૂફટોપ સબસીડી માટે ઓનલાઇન અરજી.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>તાજેતરનું લાઇટ બિલ</li>
+                            <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
+                            <li>બેંક પાસબુક / કેન્સલ ચેક</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://pmsuryaghar.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૪. ટ્રાફિક ઈ-ચલાણ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <h3>ટ્રાફિક ઈ-ચલાણ ચુકવણી</h3>
+                    <p>વાહનનો ટ્રાફિક મેમો / દંડ ચેક કરવો અને ઓનલાઇન ભરવો.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી માહિતી:</strong>
+                        <ul>
+                            <li>ગાડીનો નંબર (Vehicle No)</li>
+                            <li>ચેસીસ નંબર અથવા ચલાણ નંબર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://echallan.parivahan.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૫. ગુજરાત પોલીસ સેવાઓ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>ગુજરાત પોલીસ સેવાઓ (e-COP)</h3>
+                    <p>પોલીસ વેરિફિકેશન, ચારિત્ર્ય દાખલો (PCC) અને ભાડૂઆત નોંધણી.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ</li>
+                            <li>પાસપોર્ટ સાઇઝ ફોટો</li>
+                            <li>ભાડા કરાર (ભાડૂઆત માટે)</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://gujhome.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૬. વીજળી બિલ ભરણાં -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-bolt"></i></div>
+                    <h3>વીજળી બિલ ભરણાં (PGVCL/DGVCL)</h3>
+                    <p>PGVCL, DGVCL, MGVCL, UGVCL ના લાઈટ બિલ જોવા અને ભરવા.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી માહિતી:</strong>
+                        <ul>
+                            <li>કન્ઝ્યુમર નંબર (મજૂર નંબર)</li>
+                            <li>જૂનું લાઈટ બિલ</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.pgvcl.com/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૭. જીવન પ્રમાણપત્ર -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h3>જીવન પ્રમાણપત્ર (Life Certificate)</h3>
+                    <p>પેન્શનધારકો માટે ડિજિટલ વાર્ષિક હયાતીની ખાતરી કરાવો.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>PPO નંબર અને આધાર કાર્ડ</li>
+                            <li>બેંક પાસબુકની વિગત</li>
+                            <li>મોબાઈલ નંબર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://jeevanpramaan.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૮. મિલકત વેરા / પ્રોપર્ટી ટેક્સ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
+                    <h3>મિલકત વેરા / વેરા બિલ</h3>
+                    <p>મહાનગરપાલિકા કે નગરપાલિકાનો ઘરવેરો ઓનલાઇન જમા કરાવવો.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી માહિતી:</strong>
+                        <ul>
+                            <li>ટેનામેન્ટ નંબર (Tenement No.)</li>
+                            <li>જૂનું વેરા બિલ</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://enagar.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૨૯. GST સેવાઓ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-percent"></i></div>
+                    <h3>GST રજિસ્ટ્રેશન & રિટર્ન</h3>
+                    <p>નવો જીએસટી નંબર મેળવો અને માસિક GST રિટર્ન ફાઇલ કરો.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>પાન કાર્ડ અને આધાર કાર્ડ</li>
+                            <li>દુકાનનું લાઈટ બિલ / ભાડાકરાર</li>
+                            <li>બેંક સ્ટેટમેન્ટ / કેન્સલ ચેક</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.gst.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૩૦. જમીન ઇન્ડેક્સ-૨ (GARVI) -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-file-contract"></i></div>
+                    <h3>જમીન પ્રોપર્ટી ઇન્ડેક્સ-૨ & જંત્રી</h3>
+                    <p>દસ્તાવેજની ઓનલાઈન એન્ટ્રી, સરકારી જંત્રી દર અને ઇન્ડેક્સ-૨ નકલ.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી માહિતી:</strong>
+                        <ul>
+                            <li>સર્વે નંબર / ખાતા નંબર</li>
+                            <li>દસ્તાવેજ નોંધણી નંબર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://garvi.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૩૧. PM શ્રમ યોગી માનધના -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h3>PM શ્રમ યોગી માનધના (PM-SYM)</h3>
+                    <p>અસંગઠિત ક્ષેત્રના શ્રમિકો માટે રૂ. ૩૦૦૦ માસિક પેન્શન યોજના.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>આધાર કાર્ડ</li>
+                            <li>બેંક પાસબુક (Auto-debit માટે)</li>
+                            <li>મોબાઈલ નંબર</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://maandhan.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+            </div>
+
+            <!-- ૩૨. FASTag સેવાઓ -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon"><i class="fa-solid fa-car"></i></div>
+                    <h3>FASTag રિચાર્જ & નવો FASTag</h3>
+                    <p>ગાડી માટે નવો ફાસ્ટેગ કઢાવવો અથવા ઓનલાઇન રિચાર્જ કરવો.</p>
+                    <div class="doc-box">
+                        <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                        <ul>
+                            <li>ગાડીની RC બુક</li>
+                            <li>માલિકનું આધાર કાર્ડ</li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="https://www.netc.org.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
             </div>
 
         </div>
     </div>
 
-    <!-- ૨. મુખ્ય વેબસાઈટ કન્ટેન્ટ (Login કર્યા પછી જ દેખાશે) -->
-    <div id="mainContent">
-        
-        <header>
-            <div class="brand-name">
-                <h1>ASHOK DIGITAL SERVICES</h1>
-                <p>તમામ ઓનલાઇન સરકારી સેવાઓ અને ડાયરેક્ટ લિંક્સ</p>
-            </div>
-            <button class="logout-btn" onclick="manualLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
-        </header>
+    <!-- ૪. ફૂટર -->
+    <footer>
+        <p>© 2026 ASHOK DIGITAL SERVICES. All Rights Reserved.</p>
+    </footer>
 
-        <div class="container">
-            <div class="section-title">
-                <h2>અમારી સંપૂર્ણ સેવાઓ & જરૂરી દસ્તાવેજો</h2>
-            </div>
-
-            <div class="services-grid">
-                
-                <!-- ૧. નવું NSDL પાન કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-address-card"></i></div>
-                        <h3>નવું NSDL પાન કાર્ડ</h3>
-                        <p>ઓનલાઇન નવું પાન કાર્ડ કઢાવવા માટે નવી અરજી (Protean NSDL).</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>વોટર કાર્ડ અથવા જન્મ પ્રમાણપત્ર</li>
-                                <li>૨ પાસપોર્ટ સાઈઝ ફોટા</li>
-                                <li>અરજદારની સહી</li>
-                                <li>ઈમેલ ID & મોબાઈલ નંબર</li>
-                                <li>પપ્પાનું આધાર કાર્ડ (માત્ર સગીર/Minor બાળક માટે)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૨. નવું UTI પાન કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-pen-to-square"></i></div>
-                        <h3>નવું UTI પાન કાર્ડ</h3>
-                        <p>UTITSL પોર્ટલ દ્વારા પાન કાર્ડ અપ્લાય, સુધારો અથવા e-PAN સેવાઓ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>હાલનું પાન કાર્ડ અને આધાર કાર્ડ</li>
-                                <li>સુધારા માટેનો યોગ્ય પુરાવો (જેમ કે ગેઝેટ/ઓળખપત્ર)</li>
-                                <li>મોબાઈલ નંબર (OTP સંચાર માટે)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.pan.utiitsl.com/PAN/csf.html" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> UTI ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૩. ઇન્કમ ટેક્સ લોગિન -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-calculator"></i></div>
-                        <h3>ઇન્કમ ટેક્સ લોગિન (Income Tax e-Filing)</h3>
-                        <p>ITR ફાઈલ કરવા, પાન-આધાર લિંક સ્ટેટસ ચકાસવા અને ઈ-ફાઈલિંગ સેવાઓ માટે.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>પાન કાર્ડ નંબર અને પાસવર્ડ</li>
-                                <li>આધાર કાર્ડ અને મોબાઈલ નંબર (OTP માટે)</li>
-                                <li>બેંક એકાઉન્ટની વિગતો / Form 26AS</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/login" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૪. ગુમાસ્તા ધારો -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-store"></i></div>
-                        <h3>ગુમાસ્તા ધારો (Shop Act License)</h3>
-                        <p>નવી દુકાન, ઓફિસ કે બિઝનેસ રજિસ્ટ્રેશન માટે શોપ એક્ટ લાયસન્સ (e-Nagar Portal).</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>માલિકનું આધાર કાર્ડ અને પાન કાર્ડ</li>
-                                <li>દુકાનનો ફોટો (બોર્ડ સાથે)</li>
-                                <li>લાઇટ બિલ અથવા ભાડા કરાર</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://enagar.gujarat.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૫. આધાર કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-id-badge"></i></div>
-                        <h3>આધાર કાર્ડ સેવાઓ (Aadhaar Services)</h3>
-                        <p>આધાર કાર્ડ ડાઉનલોડ કરવું, સરનામું બદલવું, મોબાઈલ નંબર સ્ટેટસ અને PVC કાર્ડ ડાઉનલોડ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર નંબર અથવા એનરોલમેન્ટ સ્લિપ</li>
-                                <li>લિંક થયેલ મોબાઈલ નંબર (OTP માટે)</li>
-                                <li>સરનામા સુધારા માટે લાઈટ બિલ/રેશનકાર્ડ</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://myaadhaar.uidai.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૬. FSSAI ફૂડ લાયસન્સ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
-                        <h3>FSSAI ફૂડ લાયસન્સ (FASSAI Certificate)</h3>
-                        <p>દુકાન, રેસ્ટોરન્ટ કે ખાદ્યપદાર્થના વ્યવસાય માટે FSSAI રજિસ્ટ્રેશન અને લાયસન્સ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>માલિકનો પાસપોર્ટ સાઇઝ ફોટો</li>
-                                <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
-                                <li>દુકાનનું સરનામાનું પ્રમાણપત્ર / ભાડા કરાર</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://foscos.fssai.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૭. ટ્રેડમાર્ક -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-copyright"></i></div>
-                        <h3>ટ્રેડમાર્ક રજિસ્ટ્રેશન (Trademark)</h3>
-                        <p>તમારા બ્રાન્ડ નેમ, લોગો અથવા વ્યવસાયના નામનું ટ્રેડમાર્ક રજિસ્ટ્રેશન.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>બ્રાન્ડ લોગો કે નામની વિગત</li>
-                                <li>માલિકનું આધાર અને પાન કાર્ડ</li>
-                                <li>બિઝનેસ રજિસ્ટ્રેશન / MSME સર્ટિફિકેટ</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://ipindiaonline.gov.in/trademarkonline/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૮. જમીનના દસ્તાવેજો -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-file-invoice"></i></div>
-                        <h3>જમીનના દસ્તાવેજો (7/12 & 8-A)</h3>
-                        <p>જમીનના 7/12, 8-A અને હક પત્રક (6 નંબર) ની નકલો મેળવો.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>ખાતા નંબર અથવા સર્વે નંબર</li>
-                                <li>ગામનું નામ અને તાલુકો</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://anyror.gujarat.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૯. આયુષ્માન ભારત કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-hospital-user"></i></div>
-                        <h3>આયુષ્માન ભારત કાર્ડ (PM-JAY)</h3>
-                        <p>રૂ. 10 લાખ સુધીની મફત સારવાર માટેનું આયુષ્માન કાર્ડ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>રેશન કાર્ડ અને આધાર કાર્ડ</li>
-                                <li>આવકનો દાખલો</li>
-                                <li>મોબાઈલ નંબર</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://beneficiary.nha.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૦. ઇ-શ્રમ કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-user-gear"></i></div>
-                        <h3>ઇ-શ્રમ કાર્ડ (e-Shram)</h3>
-                        <p>અસંગઠિત ક્ષેત્રના કામદારો માટે ઇ-શ્રમ રજિસ્ટ્રેશન.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>બેંક પાસબુક</li>
-                                <li>આધાર સાથે લિંક મોબાઈલ નંબર</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://eshram.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૧. પાસપોર્ટ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-plane"></i></div>
-                        <h3>પાસપોર્ટ સેવા (Passport)</h3>
-                        <p>નવા પાસપોર્ટ અરજી અને એપોઇન્ટમેન્ટ બુકિંગ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
-                                <li>10મા ધોરણની માર્કશીટ / જન્મ દાખલો</li>
-                                <li>બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.passportindia.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૨. આવક / જાતિના દાખલા -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-certificate"></i></div>
-                        <h3>આવક / જાતિના દાખલા</h3>
-                        <p>આવકનો દાખલો, જાતિનો દાખલો અને Non-Creamy Layer સર્ટિફિકેટ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને રેશન કાર્ડ</li>
-                                <li>લાઇટ બિલ / વેરા બિલ</li>
-                                <li>તલાટીનો આવકનો દાખલો / સોગંદનામું</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.digitalgujarat.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૩. ચૂંટણી કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-check-to-slot"></i></div>
-                        <h3>ચૂંટણી કાર્ડ (Voter ID)</h3>
-                        <p>નવું ચૂંટણી કાર્ડ, સરનામું સુધારો અને ડાઉનલોડ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>૧ પાસપોર્ટ સાઇઝ ફોટો</li>
-                                <li>રહેઠાણનો પુરાવો (લાઇટ બિલ)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://voters.eci.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૪. રેશન કાર્ડ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-wheat-awn"></i></div>
-                        <h3>રેશન કાર્ડ સેવાઓ</h3>
-                        <p>રેશન કાર્ડમાં નામ ઉમેરવું, ઓછું કરવું અથવા નવું કઢાવવું.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>જૂનું રેશન કાર્ડ</li>
-                                <li>નવા સભ્યનું આધાર કાર્ડ / જન્મ દાખલો</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://ipds.gujarat.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૫. MSME / ઉદ્યમ રજીસ્ટ્રેશન (સાચી અને ૧૦૦% વર્કિંગ લિંક સાથે) -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
-                        <h3>MSME / ઉદ્યમ રજીસ્ટ્રેશન</h3>
-                        <p>ધંધા-વેપાર માટે સરકારી ઉદ્યમ રજીસ્ટ્રેશન સર્ટિફિકેટ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને પાન કાર્ડ</li>
-                                <li>બિઝનેસ વિગત અને બેંક એકાઉન્ટ</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://udyamregistration.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૬. PM કિસાન -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                        <h3>PM કિસાન સન્માન નિધિ</h3>
-                        <p>PM કિસાન યોજનાનું ફોર્મ અને e-KYC કરવા માટે.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>જમીનના 7/12 & 8-A</li>
-                                <li>આધાર કાર્ડ અને બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://pmkisan.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૭. ઈ-સમાજ કલ્યાણ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-people-hold"></i></div>
-                        <h3>ઈ-સમાજ કલ્યાણ યોજનાઓ</h3>
-                        <p>માનવ ગરિમા યોજના, કુંવરબાઈનું મામેરું અને અન્ય સરકારી સહાય.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ અને રેશન કાર્ડ</li>
-                                <li>આવક અને જાતિનો દાખલો</li>
-                                <li>બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://esamajkalyan.gujarat.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૮. ડ્રાઇવિંગ લાયસન્સ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
-                        <h3>ડ્રાઇવિંગ લાયસન્સ સેવાઓ</h3>
-                        <p>લર્નિંગ અને પાકા લાયસન્સ માટે ઓનલાઇન અરજી.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>આધાર કાર્ડ</li>
-                                <li>શાળા છોડ્યાનું પ્રમાણપત્ર / જન્મ દાખલો</li>
-                                <li>ફોટો અને સહી</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://sarathi.parivahan.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૧૯. ડિજિટલ ગુજરાત શિષ્યવૃત્તિ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <h3>ડિજિટલ ગુજરાત શિષ્યવૃત્તિ</h3>
-                        <p>વિદ્યાર્થીઓ માટે સરકારી સ્કોલરશીપના ઓનલાઇન ફોર્મ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>માર્કશીટ અને ફી પહોંચ</li>
-                                <li>આવક અને જાતિનો દાખલો</li>
-                                <li>આધાર કાર્ડ અને બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.digitalgujarat.gov.in/loginapp/CitizenLogin.aspx" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૨૦. સરકારી ભરતી OJAS -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
-                        <h3>સરકારી નોકરી ફોર્મ (OJAS)</h3>
-                        <p>ગુજરાત સરકારની તમામ ભરતીના ઓનલાઇન ફોર્મ.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>શૈક્ષણિક માર્કશીટ્સ</li>
-                                <li>જાતિનો દાખલો / ક્રીમિલેયર</li>
-                                <li>ફોટો અને સહી</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://ojas.gujarat.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૨૧. PF સેવાઓ -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-piggy-bank"></i></div>
-                        <h3>PF (પીએફ) ઉપાડ & KYC</h3>
-                        <p>PF એકાઉન્ટમાંથી ઓનલાઇન પૈસા ઉપાડવા અને KYC.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>UAN નંબર અને પાસવર્ડ</li>
-                                <li>આધાર કાર્ડ, પાન કાર્ડ</li>
-                                <li>કેન્સલ ચેક / બેંક પાસબુક</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://unifiedportal-mem.epfindia.gov.in/memberinterface/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-                <!-- ૨૨. ગેસ કનેક્શન -->
-                <div class="service-card">
-                    <div>
-                        <div class="service-icon"><i class="fa-solid fa-fire-flame-simple"></i></div>
-                        <h3>ગેસ કનેક્શન (ઉજ્જવલા યોજના)</h3>
-                        <p>નવું LPG ગેસ કનેક્શન અને e-KYC પ્રક્રિયા.</p>
-                        <div class="doc-box">
-                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
-                            <ul>
-                                <li>રેશન કાર્ડ અને આધાર કાર્ડ</li>
-                                <li>બેંક પાસબુક</li>
-                                <li>પાસપોર્ટ સાઇઝ ફોટો</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="https://www.pmuy.gov.in/" class="btn-direct" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
-                </div>
-
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2026 ASHOK DIGITAL SERVICES. All Rights Reserved.</p>
-        </footer>
-
-    </div>
-
-    <!-- 3. JAVASCRIPT LOGIC FOR DIRECT ID/PASSWORD LOGIN AND AUTO-LOGOUT -->
+    <!-- ૫. લોગિન અને ઓટો-લોગઆઉટ સ્ક્રિપ્ટ -->
     <script>
-        const correctID = "30062001";
-        const correctPass = "Raval@.2001";
-
-        // 1. ID Password ચકાસણી અને સીધું લોગિન
-        function verifyCredentials() {
-            const enteredID = document.getElementById("userId").value.trim();
-            const enteredPass = document.getElementById("userPass").value.trim();
-            const error1 = document.getElementById("error1");
-
-            if (enteredID === correctID && enteredPass === correctPass) {
-                error1.style.display = "none";
-                
-                // Session Storage માં લોગિન સ્ટેટસ સેટ કરવું
-                sessionStorage.setItem("isLoggedIn", "true");
-                
-                showMainWebsite();
-            } else {
-                error1.style.display = "block";
-            }
-        }
-
-        // 2. મુખ્ય વેબસાઈટ બતાવો
-        function showMainWebsite() {
-            document.getElementById("loginOverlay").style.display = "none";
-            document.getElementById("mainContent").style.display = "block";
-        }
-
-        // 3. મેન્યુઅલ લોગઆઉટ બટન
-        function manualLogout() {
-            sessionStorage.removeItem("isLoggedIn");
-            location.reload();
-        }
-
-        // 4. AUTO LOGOUT LOGIC (સાઇટ બહાર નીકળો અથવા ટેબ/બ્રાઉઝર બંધ કરો એટલે તરત Logout)
         window.onload = function() {
             if (sessionStorage.getItem("isLoggedIn") === "true") {
-                showMainWebsite();
+                document.getElementById("login-overlay").style.display = "none";
             }
         };
 
-        // ટેબ/પેજ બંધ થાય એટલે ઓટોમેટિક લોગઆઉટ થવા માટે
-        window.addEventListener("beforeunload", function () {
-            sessionStorage.removeItem("isLoggedIn");
-        });
-    </script>
+        function checkLogin() {
+            var id = document.getElementById("userId").value;
+            var pass = document.getElementById("userPass").value;
 
+            if (id === "30062001" && pass === "Ashokds@.2001") {
+                sessionStorage.setItem("isLoggedIn", "true");
+                document.getElementById("login-overlay").style.display = "none";
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
 
