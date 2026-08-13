@@ -99,6 +99,7 @@
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
         }
 
         .brand-name h1 {
@@ -111,6 +112,23 @@
             font-size: 0.95rem;
             opacity: 0.9;
             margin-top: 5px;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
         }
 
         .container {
@@ -229,6 +247,10 @@
             .brand-name h1 {
                 font-size: 1.5rem;
             }
+            .logout-btn {
+                position: static;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
@@ -251,6 +273,7 @@
             <h1>ASHOK DIGITAL SERVICES</h1>
             <p>તમામ ઓનલાઇન સરકારી સેવાઓ અને ડાયરેક્ટ લિંક્સ</p>
         </div>
+        <button class="logout-btn" onclick="manualLogout()"><i class="fa-solid fa-right-from-bracket"></i> લોગઆઉટ</button>
     </header>
 
     <!-- ૩. સેવાઓ સેક્શન -->
@@ -871,24 +894,36 @@
         <p>© 2026 ASHOK DIGITAL SERVICES. All Rights Reserved.</p>
     </footer>
 
-    <!-- ૫. લોગિન અને ઓટો-લોગઆઉટ સ્ક્રિપ્ટ -->
+    <!-- ૫. સિક્યોરિટી અને ઓટો-લોગઆઉટ સ્ક્રિપ્ટ -->
     <script>
+        // પેજ લોડ થાય ત્યારે લોગિન સ્ટેટસ ચકાસવું (sessionStorage નો ઉપયોગ - જેથી ટેબ બંધ થતાં ઓટો લોગઆઉટ થાય)
         window.onload = function() {
             if (sessionStorage.getItem("isLoggedIn") === "true") {
                 document.getElementById("login-overlay").style.display = "none";
+            } else {
+                document.getElementById("login-overlay").style.display = "flex";
             }
         };
 
+        // લોગિન વિગતો ચકાસવી
         function checkLogin() {
             var id = document.getElementById("userId").value;
             var pass = document.getElementById("userPass").value;
 
-            if (id === "30062001" && pass === "Ashokds@.2001") {
+            // અપડેટ કરેલો ID અને Password
+            if (id === "30062001" && pass === "Raval@.2001") {
                 sessionStorage.setItem("isLoggedIn", "true");
                 document.getElementById("login-overlay").style.display = "none";
+                document.getElementById("error-msg").style.display = "none";
             } else {
                 document.getElementById("error-msg").style.display = "block";
             }
+        }
+
+        // મેન્યુઅલ લોગઆઉટ ફંકશન
+        function manualLogout() {
+            sessionStorage.removeItem("isLoggedIn");
+            location.reload();
         }
     </script>
 </body>
