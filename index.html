@@ -3,94 +3,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSME Portal Login</title>
+    <title>ASHOK DIGITAL SERVICES</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
-        h2 { color: #003366; margin-bottom: 20px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
-        button { width: 100%; padding: 12px; background-color: #003366; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; margin-top: 10px; }
-        button:hover { background-color: #002244; }
-        .btn-msme { background-color: #28a745; margin-top: 15px; text-decoration: none; display: inline-block; width: 100%; padding: 12px; color: white; border-radius: 6px; font-weight: bold; }
-        .btn-msme:hover { background-color: #218838; }
-        .btn-logout { background-color: #dc3545; }
-        .btn-logout:hover { background-color: #c82333; }
-        .hidden { display: none; }
-        .error { color: #d9534f; font-size: 14px; margin-top: 5px; }
-        .info-card { background-color: #e9ecef; padding: 15px; border-radius: 6px; text-align: left; margin: 15px 0; }
+        :root {
+            --primary-color: #0b4c8c;
+            --secondary-color: #f98754;
+            --bg-main: #f4f6f9;
+            --bg-card: #ffffff;
+            --text-main: #222222;
+            --text-muted: #555555;
+            --border-color: #ced4da;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        /* --- LOGIN & OTP MODAL STYLING --- */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .login-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .login-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-login:hover {
+            background-color: #083868;
+        }
+
+        .error-msg {
+            color: red;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .otp-info-box {
+            background-color: #e8f4fd;
+            border: 1px dashed var(--primary-color);
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            color: #000;
+            font-size: 0.9rem;
+        }
+
+        .otp-step {
+            display: none;
+        }
+
+        /* --- WEBSITE STYLING --- */
+        #mainContent {
+            display: none;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .brand-name h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .brand-name p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            display: inline-block;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 5px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .doc-box {
+            background-color: #f8f9fa;
+            border-left: 3px solid var(--secondary-color);
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .doc-box strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .doc-box ul {
+            padding-left: 18px;
+            color: var(--text-muted);
+        }
+
+        .btn-direct {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-direct:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .brand-name h1 {
+                font-size: 1.4rem;
+            }
+            .logout-btn {
+                position: static;
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
 
-<!-- Login Form -->
-<div class="box" id="loginBox">
-    <h2>MSME પ્લેટફોર્મ લોગિન</h2>
-    <input type="text" id="userid" placeholder="User ID">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">લોગિન કરો</button>
-    <p id="errorMsg" class="error"></p>
-</div>
+    <!-- ૧. લોગિન અને OTP પોપ-અપ -->
+    <div id="loginOverlay">
+        <div class="login-box">
+            
+            <!-- સ્ટેપ ૧: ID અને પાસવર્ડ -->
+            <div id="stepLogin">
+                <h2>સિક્યોર લોગિન</h2>
+                <p>ASHOK DIGITAL SERVICES માં પ્રવેશવા માટે ID અને પાસવર્ડ નાખો</p>
+                <div class="input-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" placeholder="ID આપો">
+                </div>
+                <div class="input-group">
+                    <label for="userPass">Password</label>
+                    <input type="password" id="userPass" placeholder="Password આપો">
+                </div>
+                <button class="btn-login" onclick="verifyCredentials()">આગળ વધો</button>
+                <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
+            </div>
 
-<!-- Dashboard / MSME Panel -->
-<div class="box hidden" id="dashboardBox">
-    <h2>Welcome to Dashboard</h2>
-    <div class="info-card">
-        <p><strong>User ID:</strong> <span id="userDisplay"></span></p>
-        <p><strong>Status:</strong> Successfully Logged In</p>
+            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન (ટેલિગ્રામ દ્વારા ઓટીપી જશે) -->
+            <div id="stepOtp" class="otp-step">
+                <h2>OTP વેરિફિકેશન</h2>
+                
+                <div class="otp-info-box">
+                    તમારા મોબાઈલમાં Telegram પર <b>OTP મોકલવામાં આવ્યો છે</b>. કૃપા કરીને ચેક કરીને નીચે દાખલ કરો.
+                </div>
+
+                <div class="input-group">
+                    <label for="otpInput">Enter OTP</label>
+                    <input type="text" id="otpInput" maxlength="6" placeholder="મોબાઈલ પર આવેલ OTP નાખો">
+                </div>
+                <button class="btn-login" onclick="verifyOTP()">લોગિન કરો</button>
+                <p id="error2" class="error-msg">ખોટો OTP! ફરી પ્રયત્ન કરો.</p>
+            </div>
+
+        </div>
     </div>
 
-    <!-- Official MSME Site Link -->
-    <a href="https://udyamregistration.gov.in/" target="_blank" class="btn-msme">
-        MSME (Udyam) સત્તાવાર પોર્ટલ ખોલો 🔗
-    </a>
+    <!-- ૨. મુખ્ય વેબસાઈટ કન્ટેન્ટ -->
+    <div id="mainContent">
+        
+        <header>
+            <div class="brand-name">
+                <h1>ASHOK DIGITAL SERVICES</h1>
+                <p>તમામ ઓનલાઇન સરકારી સેવાઓ અને ડાયરેક્ટ લિંક્સ</p>
+            </div>
+            <button class="logout-btn" onclick="manualLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+        </header>
 
-    <button onclick="logout()" class="btn-logout">Logout</button>
-</div>
+        <div class="container">
+            <div class="section-title">
+                <h2>અમારી સંપૂર્ણ સેવાઓ & જરૂરી દસ્તાવેજો</h2>
+            </div>
 
-<script>
-    // Login Credentials
-    const CORRECT_ID = "30062001";
-    const CORRECT_PASS = "Ashokds@.2001";
+            <div class="services-grid">
+                
+                <!-- ૧. નવું NSDL પાન કાર્ડ -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-address-card"></i></div>
+                        <h3>નવું NSDL પાન કાર્ડ</h3>
+                        <p>ઓનલાઇન નવું પાન કાર્ડ કઢાવવા માટે નવી અરજી (Protean NSDL).</p>
+                        <div class="doc-box">
+                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                            <ul>
+                                <li>ઓળખનો પુરાવો (દા.ત. આધાર કાર્ડ)</li>
+                                <li>જન્મ તારીખનો પુરાવો</li>
+                                <li>૨ પાસપોર્ટ સાઈઝ ફોટા</li>
+                                <li>અરજદારની સહી</li>
+                                <li>ઈમેલ ID & મોબાઈલ નંબર</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+                </div>
 
-    // Check login state on page load
-    window.onload = function() {
-        if (sessionStorage.getItem("isLoggedIn") === "true") {
-            showDashboard();
+                <!-- ૨. નવું UTI પાન કાર્ડ -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                        <h3>નવું UTI પાન કાર્ડ</h3>
+                        <p>UTITSL પોર્ટલ દ્વારા પાન કાર્ડ અપ્લાય, સુધારો અથવા e-PAN સેવાઓ.</p>
+                        <div class="doc-box">
+                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                            <ul>
+                                <li>હાલનું પાન કાર્ડ અને ઓળખનો પુરાવો</li>
+                                <li>સુધારા માટેનો યોગ્ય પુરાવો</li>
+                                <li>મોબાઈલ નંબર (OTP સંચાર માટે)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://www.pan.utiitsl.com/PAN/csf.html" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> UTI ડાયરેક્ટ લિંક</a>
+                </div>
+
+                <!-- ૩. ઇન્કમ ટેક્સ લોગિન -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <h3>ઇન્કમ ટેક્સ લોગિન (Income Tax e-Filing)</h3>
+                        <p>ITR ફાઈલ કરવા, પાન લિંક સ્ટેટસ ચકાસવા અને ઈ-ફાઈલિંગ સેવાઓ માટે.</p>
+                        <div class="doc-box">
+                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                            <ul>
+                                <li>પાન કાર્ડ નંબર અને પાસવર્ડ</li>
+                                <li>મોબાઈલ નંબર (OTP માટે)</li>
+                                <li>બેંક એકાઉન્ટની વિગતો / Form 26AS</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/login" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+                </div>
+
+                <!-- ૪. ગુમાસ્તા ધારો -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-store"></i></div>
+                        <h3>ગુમાસ્તા ધારો (Shop Act License)</h3>
+                        <p>નવી દુકાન, ઓફિસ કે બિઝનેસ રજિસ્ટ્રેશન માટે શોપ એક્ટ લાયસન્સ (e-Nagar Portal).</p>
+                        <div class="doc-box">
+                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                            <ul>
+                                <li>માલિકનો ઓળખનો પુરાવો અને પાન કાર્ડ</li>
+                                <li>દુકાનનો ફોટો (બોર્ડ સાથે)</li>
+                                <li>લાઇટ બિલ અથવા ભાડા કરાર</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://enagar.gujarat.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+                </div>
+
+                <!-- ૫. આધાર કાર્ડ -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-id-badge"></i></div>
+                        <h3>આધાર કાર્ડ સેવાઓ (Aadhaar Services)</h3>
+                        <p>આધાર કાર્ડ ડાઉનલોડ કરવું, સરનામું બદલવું, મોબાઈલ નંબર સ્ટેટસ અને PVC કાર્ડ ડાઉનલોડ.</p>
+                        <div class="doc-box">
+                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                            <ul>
+                                <li>એનરોલમેન્ટ સ્લિપ અથવા ઓળખ વિગતો</li>
+                                <li>લિંક થયેલ મોબાઈલ નંબર (OTP માટે)</li>
+                                <li>સરનામા સુધારા માટે લાઈટ બિલ/રેશનકાર્ડ</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://myaadhaar.uidai.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+                </div>
+
+                <!-- ૬. FSSAI ફૂડ લાયસન્સ -->
+                <div class="service-card">
+                    <div>
+                        <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+                        <h3>FSSAI ફૂડ લાયસન્સ (FASSAI Certificate)</h3>
+                        <p>દુકાન, રેસ્ટોરન્ટ કે ખાદ્યપદાર્થના વ્યવસાય માટે FSSAI રજિસ્ટ્રેશન અને લાયસન્સ.</p>
+                        <div class="doc-box">
+                            <strong>જરૂરી ડોક્યુમેન્ટ્સ:</strong>
+                            <ul>
+                                <li>માલિકનો પાસપોર્ટ સાઇઝ ફોટો</li>
+                                <li>ઓળખનો પુરાવો અને પાન કાર્ડ</li>
+                                <li>દુકાનનું સરનામાનું પ્રમાણપત્ર / ભાડા કરાર</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="https://foscos.fssai.gov.in/" class="btn-direct" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> ડાયરેક્ટ લિંક</a>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2026 ASHOK DIGITAL SERVICES. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- 3. JAVASCRIPT LOGIC -->
+    <script>
+        const correctID = "30062001";
+        const correctPass = "Raval@.2001";
+        let generatedOTP = "";
+
+        // TELEGRAM BOT CONFIGURATION
+        const telegramBotToken = "YOUR_TELEGRAM_BOT_TOKEN"; // અહીં તમારો Bot Token પેસ્ટ કરો
+        const telegramChatId = "6564718271";                 // તમારો Chat ID સેટ કરી દીધો છે
+
+        // ૧. ID-Password ચકાસીને Telegram પર OTP મોકલવો
+        function verifyCredentials() {
+            const enteredID = document.getElementById("userId").value.trim();
+            const enteredPass = document.getElementById("userPass").value.trim();
+            const error1 = document.getElementById("error1");
+
+            if (enteredID === correctID && enteredPass === correctPass) {
+                error1.style.display = "none";
+                
+                // ૬ અંકનો રેન્ડમ OTP જનરેટ કરવો
+                generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                
+                // Telegram API દ્વારા મોબાઈલ પર મેસેજ મોકલવો
+                sendTelegramOTP(generatedOTP);
+
+                document.getElementById("stepLogin").style.display = "none";
+                document.getElementById("stepOtp").style.display = "block";
+            } else {
+                error1.style.display = "block";
+            }
         }
-    };
 
-    function login() {
-        const idInput = document.getElementById("userid").value.trim();
-        const passInput = document.getElementById("password").value.trim();
-        const errorMsg = document.getElementById("errorMsg");
+        // Telegram Bot API Call Function
+        function sendTelegramOTP(otp) {
+            const textMessage = `🔐 ASHOK DIGITAL SERVICES\n\nતમારો લૉગિન OTP છે: ${otp}\n(આ OTP કોઈની સાથે શેર કરશો નહીં)`;
+            const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(textMessage)}`;
 
-        if (idInput === CORRECT_ID && passInput === CORRECT_PASS) {
-            sessionStorage.setItem("isLoggedIn", "true");
-            sessionStorage.setItem("loggedUser", idInput);
-            showDashboard();
-        } else {
-            errorMsg.innerText = "ખોટો User ID અથવા Password!";
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("OTP Sent via Telegram:", data);
+                })
+                .catch(error => {
+                    console.error("Telegram API Error:", error);
+                });
         }
-    }
 
-    function showDashboard() {
-        document.getElementById("loginBox").classList.add("hidden");
-        document.getElementById("dashboardBox").classList.remove("hidden");
-        document.getElementById("userDisplay").innerText = sessionStorage.getItem("loggedUser");
-    }
+        // ૨. OTP ચકાસણી અને લોગિન
+        function verifyOTP() {
+            const userOTP = document.getElementById("otpInput").value.trim();
+            const error2 = document.getElementById("error2");
 
-    function logout() {
-        sessionStorage.clear();
-        location.reload();
-    }
+            if (userOTP === generatedOTP) {
+                error2.style.display = "none";
+                
+                // Session Storage સેટ કરવું
+                sessionStorage.setItem("isLoggedIn", "true");
+                showMainWebsite();
+            } else {
+                error2.style.display = "block";
+            }
+        }
 
-    // Auto Logout feature (when leaving page or closing tab)
-    window.addEventListener("pagehide", function () {
-        sessionStorage.clear();
-    });
-</script>
+        // ૩. મુખ્ય વેબસાઈટ બતાવો
+        function showMainWebsite() {
+            document.getElementById("loginOverlay").style.display = "none";
+            document.getElementById("mainContent").style.display = "block";
+        }
+
+        // ૪. મેન્યુઅલ લોગઆઉટ બટન
+        function manualLogout() {
+            sessionStorage.removeItem("isLoggedIn");
+            location.reload();
+        }
+
+        // ૫. AUTO LOGOUT LOGIC
+        window.onload = function() {
+            if (sessionStorage.getItem("isLoggedIn") === "true") {
+                showMainWebsite();
+            }
+        };
+
+        window.addEventListener("beforeunload", function () {
+            sessionStorage.removeItem("isLoggedIn");
+        });
+    </script>
 
 </body>
 </html>
-
