@@ -38,7 +38,7 @@
             padding-bottom: 40px;
         }
 
-        /* --- LOGIN & OTP MODAL STYLING --- */
+        /* --- LOGIN MODAL STYLING --- */
         #loginOverlay {
             position: fixed;
             top: 0;
@@ -116,10 +116,6 @@
             color: red;
             font-size: 0.85rem;
             margin-top: 10px;
-            display: none;
-        }
-
-        .otp-step {
             display: none;
         }
 
@@ -276,11 +272,10 @@
 </head>
 <body>
 
-    <!-- ૧. લોગિન અને OTP પોપ-અપ -->
+    <!-- ૧. લોગિન પોપ-અપ -->
     <div id="loginOverlay">
         <div class="login-box">
             
-            <!-- સ્ટેપ ૧: ID અને પાસવર્ડ -->
             <div id="stepLogin">
                 <h2>સિક્યોર લોગિન</h2>
                 <p>ASHOK DIGITAL SERVICES માં પ્રવેશવા માટે ID અને પાસવર્ડ નાખો</p>
@@ -292,20 +287,8 @@
                     <label for="userPass">Password</label>
                     <input type="password" id="userPass" placeholder="Password આપો">
                 </div>
-                <button class="btn-login" onclick="verifyCredentials()">આગળ વધો</button>
+                <button class="btn-login" onclick="verifyCredentials()">લોગિન કરો</button>
                 <p id="error1" class="error-msg">ખોટો ID અથવા પાસવર્ડ!</p>
-            </div>
-
-            <!-- સ્ટેપ ૨: OTP વેરિફિકેશન -->
-            <div id="stepOtp" class="otp-step">
-                <h2>OTP વેરિફિકેશન</h2>
-                <p>મોબાઈલ નંબર <b>9484418910</b> પર મોકલેલ 6-અંકનો OTP નાખો</p>
-                <div class="input-group">
-                    <label for="otpInput">Enter OTP</label>
-                    <input type="text" id="otpInput" maxlength="6" placeholder="******">
-                </div>
-                <button class="btn-login" onclick="verifyOTP()">લોગિન કરો</button>
-                <p id="error2" class="error-msg">ખોટો OTP! ફરી પ્રયત્ન કરો.</p>
             </div>
 
         </div>
@@ -733,13 +716,12 @@
 
     </div>
 
-    <!-- 3. JAVASCRIPT LOGIC FOR LOGIN, OTP AND AUTO-LOGOUT -->
+    <!-- 3. JAVASCRIPT LOGIC FOR DIRECT ID/PASSWORD LOGIN AND AUTO-LOGOUT -->
     <script>
         const correctID = "30062001";
         const correctPass = "Raval@.2001";
-        let generatedOTP = "";
 
-        // 1. ID Password ચકાસણી
+        // 1. ID Password ચકાસણી અને સીધું લોગિન
         function verifyCredentials() {
             const enteredID = document.getElementById("userId").value.trim();
             const enteredPass = document.getElementById("userPass").value.trim();
@@ -748,52 +730,29 @@
             if (enteredID === correctID && enteredPass === correctPass) {
                 error1.style.display = "none";
                 
-                // રેન્ડમ 6 અંકનો OTP જનરેટ કરવો
-                generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+                // Session Storage માં લોગિન સ્ટેટસ સેટ કરવું
+                sessionStorage.setItem("isLoggedIn", "true");
                 
-                // ડેમો માટે પોપ-અપ મેસેજ વડે OTP બતાવવો
-                alert("મોબાઈલ નંબર 9484418910 પર OTP મોકલવામાં આવ્યો છે.\nતમારો OTP છે: " + generatedOTP);
-
-                document.getElementById("stepLogin").style.display = "none";
-                document.getElementById("stepOtp").style.display = "block";
+                showMainWebsite();
             } else {
                 error1.style.display = "block";
             }
         }
 
-        // 2. OTP ચકાસણી અને લોગિન
-        function verifyOTP() {
-            const userOTP = document.getElementById("otpInput").value.trim();
-            const error2 = document.getElementById("error2");
-
-            if (userOTP === generatedOTP) {
-                error2.style.display = "none";
-                
-                // Session Storage માં લોગિન સ્ટેટસ સેટ કરવું (ટેબ બંધ થતાં જ આપોઆપ ડિલીટ થઈ જશે)
-                sessionStorage.setItem("isLoggedIn", "true");
-                
-                showMainWebsite();
-            } else {
-                error2.style.display = "block";
-            }
-        }
-
-        // 3. મુખ્ય વેબસાઈટ બતાવો
+        // 2. મુખ્ય વેબસાઈટ બતાવો
         function showMainWebsite() {
-            document.getElementById("loginOverlay").style.style = "display: none !important;";
             document.getElementById("loginOverlay").style.display = "none";
             document.getElementById("mainContent").style.display = "block";
         }
 
-        // 4. મેન્યુઅલ લોગઆઉટ બટન
+        // 3. મેન્યુઅલ લોગઆઉટ બટન
         function manualLogout() {
             sessionStorage.removeItem("isLoggedIn");
             location.reload();
         }
 
-        // 5. AUTO LOGOUT LOGIC (સાઇટ બહાર નીકળો અથવા ટેબ/બ્રાઉઝર બંધ કરો એટલે તરત Logout)
+        // 4. AUTO LOGOUT LOGIC (સાઇટ બહાર નીકળો અથવા ટેબ/બ્રાઉઝર બંધ કરો એટલે તરત Logout)
         window.onload = function() {
-            // જો સેશન ચાલુ હોય તો જ લોગિન રાખવું
             if (sessionStorage.getItem("isLoggedIn") === "true") {
                 showMainWebsite();
             }
